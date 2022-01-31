@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import Character from '../components/Character';
 import Spinner from '../components/Spinner';
-import { setAllCharacters, clearCharacters } from '../features/rickAndMortySlice'; 
+import { setCharacters, clearCharacters } from '../features/rickAndMortySlice'; 
 import { useGetAllCharactersQuery, useGetCharactersQuery } from '../services/rickAndMortyApi';
 import { createIdsList } from '../utils';
 
@@ -29,7 +29,7 @@ const AllCharactersPage = () => {
         if (characters) {
             dispatch(clearCharacters([]));
         }
-        dispatch(setAllCharacters(data))
+        dispatch(setCharacters(data))
         // eslint-disable-next-line
     }, [isLoading, characterIds]);
 

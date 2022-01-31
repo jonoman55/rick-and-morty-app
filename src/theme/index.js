@@ -81,7 +81,7 @@ const custom = {
   };
   
   // MUIv5 themes
-  export const light = {
+  export const lightTheme = {
     palette: {
       mode: 'light',
       primary: {
@@ -107,7 +107,7 @@ const custom = {
     },
   };
   
-  export const dark = {
+  export const darkTheme = {
     palette: {
       mode: 'dark',
       primary: {
