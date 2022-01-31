@@ -5,7 +5,7 @@ import { Box, Paper, Typography } from '@mui/material';
 const Character = ({ character }) => (
     <Box>
         <Paper elevation={2}>
-            <Typography component={NavLink} to={`/characters/${character?.id}`} sx={{ textDecoration: 'none', color: 'black' }}>
+            <Typography component={NavLink} to={`/characters/${character?.id}`} sx={{ textDecoration: 'none', color: 'primary.contrastText'  }}>
                 {character?.name}
             </Typography>
         </Paper>

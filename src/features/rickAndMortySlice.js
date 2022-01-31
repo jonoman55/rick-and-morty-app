@@ -35,10 +35,11 @@ export const rickAndMortySlice = createSlice({
             state.page = action.payload;
         },
         setAllCharacters: (state, action) => {
-            if (state.characters !== action.payload && action.payload?.length)
+            if (state.characters !== action.payload && action.payload?.length) {
                 action.payload.forEach((character) =>
                     state.characters.push(character)
                 );
+            }
         },
         clearCharacters: (state, action) => {
             state.characters = action.payload;
