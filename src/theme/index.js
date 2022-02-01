@@ -1,7 +1,8 @@
 // Rick And Morty Portal Green: #6fca12
 // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=f2f2f2&secondary.color=424242
 const custom = {
-    main: '#6fca12',
+    //main: '#6fca12',
+    main: '#58e500',
     orange: '#ffa500',
     white: '#fff',
     black: '#000',

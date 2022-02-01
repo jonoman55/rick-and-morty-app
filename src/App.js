@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Container } from './components/Container';
-import Header from './components/Header';
+import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import CharactersPage from './pages/CharactersPage';
 import CharacterPage from './pages/CharacterPage';
@@ -19,8 +18,7 @@ const App = () => {
         <ThemeProvider theme={activeTheme}>
             <CssBaseline />
             <Router>
-                <Header />
-                <Container component='main'>
+                <Layout>
                     <Routes>
                         <Route path='/' element={<HomePage />} />
                         <Route path='/characters'>
@@ -30,7 +28,7 @@ const App = () => {
                         </Route>
                         <Route path='*' element={<NotFoundPage />} />
                     </Routes>
-                </Container>
+                </Layout>
             </Router>
         </ThemeProvider>
     );

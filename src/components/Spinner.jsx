@@ -1,9 +1,9 @@
 import { Box, CircularProgress } from '@mui/material';
 
-// TODO : Finish styling this component
+// TODO : Covert to styled components
 const Spinner = () => (
-    <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center', height: '83vh', width: '100%' }}>
-        <CircularProgress color='primary' />
+    <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center', height: '82vh', width: '100%' }}>
+        <CircularProgress sx={{ color: 'custom.main' }} />
     </Box>
 );
 

@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Box, Container, Grid, Typography } from '@mui/material';
-import Character from '../components/Character';
+import { NavLink } from 'react-router-dom';
+import { Box, Card, Grid, Typography } from '@mui/material';
 import Spinner from '../components/Spinner';
 import { setCharacters, clearCharacters } from '../features/rickAndMortySlice'; 
 import { useGetAllCharactersQuery, useGetCharactersQuery } from '../services/rickAndMortyApi';
 import { createIdsList } from '../utils';
 
 // TODO : Finish styling this page
+// TODO : Be careful with this page - possible to hit API limit if pics are included (HTTP Status - 429)
 const AllCharactersPage = () => {
     const [characterIds, setCharacterIds] = useState('');
     const { data: results, isFetching } = useGetCharactersQuery(1);
@@ -34,19 +35,23 @@ const AllCharactersPage = () => {
     }, [isLoading, characterIds]);
 
     return isLoading ? <Spinner /> : (
-        <Box>
-            <Container sx={{ marginY: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Typography component='h5' variant='h6' sx={{ m: 1 }}>
-                    All Characters - Count: {characters?.length}
-                </Typography>
-                <Grid container direction='column' spacing={1}>
-                    {characters?.map((character, index) => (
-                        <Grid item xs={12} sm={12} key={index}>
-                            <Character character={character} />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <Typography component='h5' variant='h6' sx={{ m: 1 }}>
+                All Characters - Count: {characters?.length}
+            </Typography>
+            <Grid container direction='column' spacing={1} sx={{ width: 'auto', mt: 0, ml: 0, mb: 8 }}>
+                {characters?.map((character, index) => (
+                    <Grid key={index} item xs={12} sm={12} component={NavLink} to={`/characters/${character?.id}`} sx={{
+                        textDecoration: 'none', color: 'primary.contrastText'
+                    }}>
+                        <Card elevation={2}>
+                            <Typography component="div" variant="h5" textAlign='center'>
+                                {character?.name}
+                            </Typography>
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
         </Box>
     );
 };
