@@ -1,4 +1,4 @@
-import { SvgIcon } from '@mui/material';
+import { SvgIcon, Box } from '@mui/material';
 import { createSvgIcon } from '@mui/material/utils';
 import { ReactComponent as RnMIcon } from './rnm.svg';
 
@@ -16,3 +16,9 @@ export const RickAndMortySvg = createSvgIcon(
 );
 
 export const RnMSvgIcon = (props) => <SvgIcon component={RnMIcon} inheritViewBox {...props} />;
+
+export const ApiIcon = ({ props, styles }) =>(
+  <Box {...props}>
+    <RnMSvgIcon sx={{ color: 'custom.main', height: 48, width: 48, ...styles }} />
+  </Box>
+);

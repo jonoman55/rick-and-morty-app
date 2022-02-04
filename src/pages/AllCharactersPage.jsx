@@ -9,6 +9,7 @@ import { createIdsList } from '../utils';
 
 // TODO : Finish styling this page
 // TODO : Be careful with this page - possible to hit API limit if pics are included (HTTP Status - 429)
+// TODO : Turn this into a search page
 const AllCharactersPage = () => {
     const [characterIds, setCharacterIds] = useState('');
     const { data: results, isFetching } = useGetCharactersQuery(1);
