@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Box, Button, Container, Link, Stack, Typography } from '@mui/material';
+import { Box, Container, Link, Stack, Typography, Card, CardContent } from '@mui/material';
+import { Button } from '../components/controls';
 import Spinner from '../components/Spinner';
 import { useGetCharacterByIdQuery } from '../services/rickAndMortyApi';
 
@@ -22,14 +23,16 @@ const CharacterPage = () => {
     
     return isLoading ? <Spinner /> : (
         <Box sx={{ p: 2 }}>
-            <Container sx={{ marginY: 2, display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center'  }}>
-                <Typography component='h4' variant='h6'>Character ID: {id}</Typography>
-                <Typography component='p'>{character.name} - {character.status}</Typography>
-                <Box component='img' src={character.image} alt='' />
-                <Box component={Stack} direction='row' spacing={2} justifyContent='center' sx={{ mt: 4 }}>   
-                    <Button variant='contained' LinkComponent={Link} href='/'>Home</Button>
-                    <Button variant='contained' onClick={() => navigate(-1)}>Back</Button>
-                </Box>
+            <Container sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center' }} maxWidth='md'>
+                <Card elevation={2} sx={{ p: 1 }}>
+                    <Typography component='h4' variant='h5' sx={{color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>{character.name}</Typography>
+                    <CardContent component='img' src={character.image} alt='' sx={{ p: 1, borderRadius: (theme) => theme.shape.borderRadius }} />
+                    <Typography component='p' variant='body1' sx={{color: 'primary.contrastText', textAlign: 'center' }}>{character.status}</Typography>
+                    <Stack direction='row' spacing={2} justifyContent='center' sx={{ mt: 4, mb: 2 }}>
+                        <Button variant='contained' LinkComponent={Link} href='/'>Home</Button>
+                        <Button variant='contained' onClick={() => navigate(-1)}>Back</Button>
+                    </Stack>
+                </Card>
             </Container>
         </Box>
     );
