@@ -1,7 +1,6 @@
 // Rick And Morty Portal Green: #58e500 / #6fca12 / #53ff11
 // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=f2f2f2&secondary.color=424242
 const custom = {
-    //main: '#6fca12',
     main: '#53ff11',
     orange: '#ffa500',
     white: '#fff',
@@ -13,22 +12,25 @@ const custom = {
     green: '#0cfa1c',
     red: '#ff0000',
     yellow: '#fff700',
-    alert: '#ffeb3b',
-    stadia: '#f44336',
-    playstation: '#2196f3',
-    xboxOne: '#9bf00b',
-    xbox360: '#00af00',
-    xboxCloud: '#9e9e9e',
+    myth: '#ffeb3b',
+    humanoid: '#f44336',
+    notFound: '#2196f3',
+    cyborg: '#9bf00b',
+    robot2: '#00af00',
+    chrome: '#9e9e9e',
     brightGreen: '#0cf223',
     brightRed: '#f50202',
     brightYellow: '#fff700',
     selected: '#f2f2f2cc',
-    cloud: '#7f7fda',
-    auth: '#fdc60f',
-    store: '#27ebd1',
-    all: '#147af0',
-    downloads: '#dc5ffc',
-    pc: '#181717'
+    unknown: '#7f7fda',
+    pbh: '#fdc60f',
+    blue: '#147af0',
+    teal: '#27ebd1',
+    pink: '#dc5ffc',
+    thumbBlue: '#00b1c9',
+    robot: '#cddbdd',
+    cron: '#ecbd75',
+    animal: '#bd6e15'
   };
   
   const scrollBodyLight = {

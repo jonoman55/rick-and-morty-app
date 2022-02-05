@@ -5,6 +5,8 @@ import HomePage from './pages/HomePage';
 import CharactersPage from './pages/CharactersPage';
 import CharacterPage from './pages/CharacterPage';
 import AllCharactersPage from './pages/AllCharactersPage';
+import LocationsPage from './pages/LocationsPage';
+import LocationPage from './pages/LocationPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { lightTheme, darkTheme } from './theme';
@@ -25,6 +27,10 @@ const App = () => {
                             <Route index element={<CharactersPage />} />
                             <Route path='all' element={<AllCharactersPage />} />
                             <Route path=':id' element={<CharacterPage />} />
+                        </Route>
+                        <Route path='/locations'>
+                            <Route index element={<LocationsPage />} />
+                            <Route path=':id' element={<LocationPage />} />
                         </Route>
                         <Route path='*' element={<NotFoundPage />} />
                     </Routes>

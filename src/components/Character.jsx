@@ -1,43 +1,36 @@
-import { Box, Card, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
-import { Accessibility, Circle, Male, Female, QuestionMark, Adb, NoAccounts, SmartToy, BugReport, FlutterDash } from '@mui/icons-material';
+import { Box, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material';
+import { Accessibility, Circle, Male, Female, QuestionMark, Adb, NoAccounts, SmartToy, BugReport, FlutterDash, Pets, Coronavirus } from '@mui/icons-material';
 
 // TODO : Finish styling this component
 const Character = ({ character }) => {
     console.log(character);
     return (
-        <Card elevation={2} sx={{ display: 'flex', maxWidth: 475 }}>
+        <Card elevation={2} sx={{ display: 'flex', maxWidth: 475, minHeight: 150 }}>
             <CardMedia
-                component="img"
-                sx={{ width: 150 }}
+                component='img'
+                sx={{ height: 'auto', width: 150 }}
                 image={character.image}
-                alt=""
+                alt=''
             />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
-                    <Typography component="div" variant="h5">
+                    <Typography component='div' variant='h6'>
                         {character?.name}
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                    <Typography variant='subtitle1' color='text.secondary' component='div'>
                         {character?.status} - {character?.species}
                     </Typography>
                 </CardContent>
-                <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-                    <IconButton aria-label="status">
-                        <StatusIcon status={character?.status} sx={{ height: 32, width: 32 }} />
-                    </IconButton>
-                    <IconButton aria-label="gender">
-                        <GenderIcon gender={character?.gender} sx={{ height: 32, width: 32 }} />
-                    </IconButton>
-                    <IconButton aria-label="species">
-                        <SpeciesIcon species={character?.species} sx={{ height: 32, width: 32 }} />
-                    </IconButton>
+                <Box component={Stack} direction='row' spacing={1} sx={{ display: 'flex', alignItems: 'center', pl: 2, pb: 1 }}>
+                    <Circle sx={{ color: statusColor(character.status), height: 32, width: 32 }} />
+                    <GenderIcon gender={character?.gender} sx={{ color: genderColor(character?.gender), height: 32, width: 32 }} />
+                    <SpeciesIcon species={character?.species} sx={{ height: 32, width: 32 }} />
                 </Box>
             </Box>
         </Card>
     );
 };
 
-// TODO : react-icons needed
 const SpeciesIcon = ({ species, ...other }) => {
     switch (species) {
         case 'Human':
@@ -50,6 +43,14 @@ const SpeciesIcon = ({ species, ...other }) => {
             return <BugReport {...other} />;
         case 'Poopybutthole':
             return <FlutterDash {...other} />;
+        case 'Animal':
+            return <Pets {...other} />;
+        case 'Cronenberg':
+            return <QuestionMark {...other} />;
+        case 'Disease':
+            return <Coronavirus {...other} />;
+        case 'Robot':
+            return <SmartToy {...other} />;
         case 'unknown':
             return <QuestionMark {...other} />;
         default:
@@ -63,6 +64,8 @@ const GenderIcon = ({ gender, ...other }) => {
             return <Male {...other} />;
         case 'Female':
             return <Female {...other} />;
+        case 'Genderless':
+            return <QuestionMark {...other} />;
         case 'unknown':
             return <QuestionMark {...other} />;
         default:
@@ -70,19 +73,33 @@ const GenderIcon = ({ gender, ...other }) => {
     }
 };
 
-// TODO : Always make this a circle and color it based on status
-const StatusIcon = ({ status, ...other }) => {
+const genderColor = (gender) => {
+    switch (gender) {
+        case 'Male':
+            return 'custom.blue';
+        case 'Female':
+            return 'custom.pink';
+        case 'Genderless':
+            return 'custom.unknown';
+        case 'unknown':
+            return 'custom.unknown';
+        default:
+            return 'custom.gray';
+    }
+};
+
+
+const statusColor = (status) => {
     switch (status) {
         case 'Alive':
-            return <Circle {...other} />;
+            return 'custom.green';
         case 'Dead':
-            return <Circle {...other} />;
+            return 'custom.red';
         case 'unknown':
-            return <QuestionMark {...other} />;
+            return 'custom.unknown';
         default:
-            return <NoAccounts {...other} />;
+            return 'custom.gray';
     }
 };
-
 
 export default Character;
