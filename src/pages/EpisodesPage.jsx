@@ -1,14 +1,14 @@
 import { Box, Paper, Typography } from '@mui/material';
 
 // TODO : Finish styling this page
-const LocationsPage = () => (
+const EpisodesPage = () => (
     <Box sx={{ m: 4 }}>
         <Paper elevation={2}>
             <Typography component='h4' variant='h5' sx={{ color: 'primary.contrastText', textAlign: 'center' }}>
-                LocationsPage
+                EpisodesPage
             </Typography>
         </Paper>
     </Box>
 );
 
-export default LocationsPage;
+export default EpisodesPage;

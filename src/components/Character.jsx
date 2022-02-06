@@ -5,7 +5,11 @@ import { Accessibility, Circle, Male, Female, QuestionMark, Adb, NoAccounts, Sma
 const Character = ({ character }) => {
     console.log(character);
     return (
-        <Card elevation={2} sx={{ display: 'flex', maxWidth: 475, minHeight: 150 }}>
+        <Card elevation={2} sx={{
+            display: 'flex', maxWidth: 475, minHeight: 150, bgcolor: 'primary.main', '&:hover': {
+                bgcolor: (theme) => theme.palette.mode === 'dark' ? 'custom.disabled' : 'custom.darkDisabled', opacity: 0.8
+            }
+        }}>
             <CardMedia
                 component='img'
                 sx={{ height: 'auto', width: 150 }}

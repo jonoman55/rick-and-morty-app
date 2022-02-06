@@ -1,4 +1,4 @@
-import { Box, Icon, Stack } from '@mui/material';
+import { Icon, Paper, Stack } from '@mui/material';
 import {
     Male, Female,
     Accessibility as Human,
@@ -28,7 +28,7 @@ import {
 } from 'react-icons/gi';
 import { RnMSvgIcon } from '../images/RickAndMortyIcon';
 
-// TODO : Remove from project
+// TODO : Figure out how to use this to sort characters
 // Icon Links
 // MUI List Component: https://mui.com/components/lists/
 // MUI Icon component: https://mui.com/components/icons/
@@ -36,9 +36,9 @@ import { RnMSvgIcon } from '../images/RickAndMortyIcon';
 // FontAwesome: https://fontawesome.com/v5.15/icons?d=gallery&p=1
 // React Icons: https://react-icons.github.io/react-icons
 const IconArray = () => (
-    <Box component={Stack} sx={{
-        p: 2, bgcolor: 'primary.dark', display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', justifyContent: 'space-evenly', alignItems: 'center',
-        borderRadius: (theme) => theme.shape.borderRadius
+    <Paper elevation={2} component={Stack} spacing={2} sx={{
+        p: 2, display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly', alignItems: 'center',
+        borderRadius: (theme) => theme.shape.borderRadius, mb: 2, '& :not(style)+:not(style)': { mt: 0 }
     }}>
         {/* Default */}
         <Icon
@@ -135,7 +135,7 @@ const IconArray = () => (
             component={Alive}
             sx={{ color: 'custom.yellow', width: 'auto' }}
         />
-    </Box>
+    </Paper>
 );
 
 export default IconArray;

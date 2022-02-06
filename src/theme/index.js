@@ -6,6 +6,7 @@ const custom = {
     white: '#fff',
     black: '#000',
     disabled: 'rgba(0, 0, 0, 0.26)',
+    darkDisabled: 'rgb(130 130 130)',
     divider: '#484848',
     gray: '#f2f2f2',
     error: '#d32f2f',
