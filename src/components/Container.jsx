@@ -12,5 +12,10 @@ export const Body = (props) => {
     const body = document.querySelector('body');
     body.style.backgroundColor = theme.palette.primary.dark;
     body.style.backgroundImage = `url(${backgroundImage})`;
+    body.style.backgroundSize = 'auto';
+    body.style.backgroundRepeat = 'repeat';
+    // body.style.fontFamily = 'Inconsolata, monospace';
+    // body.style.margin = 0;
+    // body.style.padding = 0;
     return <>{props.children}</>;
 };

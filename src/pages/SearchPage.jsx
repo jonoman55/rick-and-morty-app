@@ -10,8 +10,8 @@ import { createIdsList } from '../utils';
 
 // TODO : Finish styling this page
 // TODO : Be careful with this page - possible to hit API limit if pics are included (HTTP Status - 429)
-// TODO : Turn this into a search page
-const AllCharactersPage = () => {
+// TODO : Add a select for searching by Characters, Episodes and Locations
+const SearchPage = () => {
     const [characterIds, setCharacterIds] = useState('');
     const { data: results, isFetching } = useGetCharactersQuery(1);
 
@@ -34,15 +34,15 @@ const AllCharactersPage = () => {
         if (characters) {
             dispatch(clearCharacters([]));
         }
-        dispatch(setCharacters(data))
+        dispatch(setCharacters(data));
         // eslint-disable-next-line
     }, [isLoading, characterIds]);
 
     const handleSearch = ({ target: { value } }) => {
         setInputValue(value);
         setFilteredCharacters(characters?.filter(({ name }) =>
-            name?.toLowerCase().includes(inputValue.toLowerCase()))
-        );
+            name?.toLowerCase().includes(inputValue.toLowerCase())
+        ));
     }
 
     const clearSearch = () => {
@@ -51,51 +51,50 @@ const AllCharactersPage = () => {
     };
 
     return isLoading ? <Spinner /> : (
-        <Box component={Paper} elevation={2} sx={{
-            bgcolor: 'primary.dark', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'
-        }}>
-            <Typography component='h5' variant='h6' sx={{ m: 1 }}>
-                Character Count: {characters?.length}
-            </Typography>
-            <Box sx={{ p: 2, mb: 4 }}>
-                <SearchBar
-                    value={inputValue}
-                    onChange={handleSearch}
-                    onClick={clearSearch}
-                />
-            </Box>
-            <Box sx={{ width: '100%', display: 'block' }}>
-                {filteredCharacters && (
-                    <Grid container spacing={2} direction='column' sx={{ pb: 0, ml: 0, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-                        {filteredCharacters?.map((character, index) => (
-                            <Grid key={index} item xs={12} sm={12} component={NavLink} to={`/characters/${character?.id}`} sx={{
-                                pl: 1, pr: 2, pt: 1, pb: 2, bgcolor: 'primary.light', textDecoration: 'none', width: '100%'
-                            }}>
-                                <Card elevation={2} padding={2} sx={{
-                                    bgcolor: 'primary.dark', '&:hover': {
-                                        bgcolor: (theme) => theme.palette.mode === 'dark'
-                                            ? 'custom.disabled' : 'custom.darkDisabled'
-                                    }
+        <Box sx={{ p: 2 }}>
+            <Paper elevation={2} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <Typography component='h5' variant='h6' sx={{ m: 1 }}>
+                    Character Count: {characters?.length}
+                </Typography>
+                <Box sx={{ p: 2, mb: 4 }}>
+                    <SearchBar
+                        value={inputValue}
+                        onChange={handleSearch}
+                        onClick={clearSearch}
+                    />
+                </Box>
+                <Box sx={{ width: '100%' }}>
+                    {filteredCharacters && (
+                        <Grid container spacing={2} direction='column' sx={{ pb: 0, ml: 0, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                            {filteredCharacters?.map((character, index) => (
+                                <Grid key={index} item xs={12} sm={12} component={NavLink} to={`/characters/${character?.id}`} sx={{
+                                    pl: 1, pr: 2, pt: 1, pb: 2, bgcolor: 'primary.light', textDecoration: 'none', width: '100%'
                                 }}>
-                                    <CardContent sx={{ '&:last-child': { pb: 2 } }}>
-                                        <Typography sx={{
-                                            color: 'primary.contrastText', textAlign: 'center'
-                                        }}>
-                                            {character?.name}
-                                        </Typography>
-                                        <Typography sx={{
-                                            color: 'primary.contrastText', textAlign: 'center'
-                                        }}>
-                                            {character?.origin?.name}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
-                        ))}
-                    </Grid>
-                )}
-            </Box>
-            {/* <CharacterGrid characters={characters} /> */}
+                                    <Card elevation={2} sx={{
+                                        p: 2, bgcolor: 'primary.dark', '&:hover': {
+                                            bgcolor: (theme) => theme.palette.mode === 'dark'
+                                                ? 'custom.disabled' : 'custom.darkDisabled'
+                                        }
+                                    }}>
+                                        <CardContent sx={{ '&:last-child': { pb: 2 } }}>
+                                            <Typography sx={{
+                                                color: 'primary.contrastText', textAlign: 'center'
+                                            }}>
+                                                {character?.name}
+                                            </Typography>
+                                            <Typography sx={{
+                                                color: 'primary.contrastText', textAlign: 'center'
+                                            }}>
+                                                {character?.origin?.name}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    )}
+                </Box>
+            </Paper>
         </Box>
     );
 };
@@ -117,4 +116,4 @@ const CharacterGrid = ({ characters }) => (
     </Grid>
 );
 
-export default AllCharactersPage;
+export default SearchPage;
