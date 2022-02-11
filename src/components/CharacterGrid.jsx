@@ -10,8 +10,8 @@ import Pagination from './Pagination';
 import { setPage } from '../features/rickAndMortySlice';
 import { useGetCharactersQuery } from '../services/rickAndMortyApi';
 
-// TODO : Finish styling this component and fix the grid layout
-// TODO : Make this component mobile friendly
+// TODO : Finish styling this component
+// TODO : Make pagination mobile friendly
 const CharacterGrid = () => {
     const location = useLocation();
     const query = new URLSearchParams(location.search);
@@ -38,20 +38,20 @@ const CharacterGrid = () => {
     return isLoading ? <Spinner /> : (
         <Box>
             <IconArray />
-            <Paper elevation={2} sx={{ p: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Grid container spacing={4} sx={{ width: '100%', mr: 8, mt: 0, ml: 4, mb: 4, p: 2 }}>
+            <Paper elevation={2} sx={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                <Grid container spacing={4}>
                     {data?.results?.map((character, index) => (
-                        <Grid item key={index} component={NavLink} to={`/characters/${character?.id}`} xs={12} sm={10} md={6} lg={4} xl={4} sx={{
+                        <Grid item key={index} component={NavLink} to={`/characters/${character?.id}`} xs={12} sm={12} md={6} lg={6} xl={4} sx={{
                             textDecoration: 'none', color: 'primary.contrastText'
                         }}>
                             <CharacterCard character={character} />
                         </Grid>
                     ))}
-                    <Grid item xs={12} sm={10} md={6} lg={4} xl={4}>
+                    <Grid item xs={12} sm={12} md={6} lg={6} xl={4}>
                         <NavCard />
                     </Grid>
                 </Grid>
-                <Box sx={{ p: 1, mb: 1 }}>
+                <Box sx={{ p: 1, mt: 4, mb: 1 }}>
                     <Pagination
                         count={count}
                         currentPage={currentPage}

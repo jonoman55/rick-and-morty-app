@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import { Box, Container, Stack, Typography, Card, CardContent, CardActions, CardMedia } from '@mui/material';
 import { Button } from '../components/controls';
 import Spinner from '../components/Spinner';
@@ -19,7 +19,7 @@ const CharacterPage = () => {
         // eslint-disable-next-line
     }, [isLoading]);
 
-    console.log(character); 
+    console.log(character);
     
     return isLoading ? <Spinner /> : (
         <Box sx={{ p: 2 }}>
@@ -31,7 +31,14 @@ const CharacterPage = () => {
                     <Typography component='h4' variant='h5' gutterBottom sx={{ color: 'primary.contrastText', textAlign: 'center' }}>
                         {character?.name}
                     </Typography>
-                    <Typography component='h5' variant='subtitle1' color='text.secondary' textAlign='center' gutterBottom>
+                    <Typography component={NavLink} to={`/locations/${character?.origin?.url.slice(-1)}`} variant='subtitle1' gutterBottom sx={{
+                        textDecoration: 'none',
+                        color: 'text.secondary',
+                        textAlign: 'center',
+                        '&:hover': {
+                            color: 'custom.main'
+                        }
+                    }}>
                         {character?.origin?.name}
                     </Typography>
                     <Box sx={{ p: 1 }}>
@@ -42,16 +49,23 @@ const CharacterPage = () => {
                             width='100%'
                             alt=''
                             sx={{
-                                p: 0, borderRadius: (theme) => theme.shape.borderRadius,
-                                border: `1px solid black`,
+                                p: 0, border: `1px solid black`,
+                                borderRadius: (theme) => theme.shape.borderRadius,
                             }}
                         />
                     </Box>
                     <CardContent>
-                        <Typography component='p' variant='body1' sx={{ mt: 1, color: 'primary.contrastText', textAlign: 'center' }}>
+                        <Typography component='p' variant='body1' sx={{ mt: 1, color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
                             Status: {character?.status}
                         </Typography>
-                        <Typography component='p' variant='body1' sx={{ mt: 1, color: 'primary.contrastText', textAlign: 'center' }}>
+                        <Typography component={NavLink} to={`/locations/${character?.location?.url.slice(-1)}`} variant='body1' gutterBottom sx={{
+                            textDecoration: 'none',
+                            color: 'primary.contrastText',
+                            textAlign: 'center',
+                            '&:hover': {
+                                color: 'custom.main'
+                            }
+                        }}>
                             Last Seen: {character?.location?.name}
                         </Typography>
                     </CardContent>
