@@ -12,7 +12,7 @@ const Footer = () => {
             borderTop: (theme) => `1px solid ${theme.palette.primary.contrastText}`
         }}>
             <Stack direction='row' justifyContent='center' spacing={4} sx={{ my: 2 }}>
-                <ToolTip title='Visit My GitHub' placement='top' component={
+                <ToolTip title='Visit My GitHub Page' placement='top' component={
                     <Box component={Link}
                         sx={{ textDecoration: 'none', color: 'primary.contrastText' }}
                         href='https://github.com/jonoman55'
@@ -22,7 +22,7 @@ const Footer = () => {
                         <GitHub fontSize='large' />
                     </Box>}
                 />
-                <ToolTip title='Rick And Morty API' placement='top' component={
+                <ToolTip title='The Rick And Morty API' placement='top' component={
                     <Box component={Link}
                         sx={{ textDecoration: 'none', color: 'primary.contrastText' }}
                         href='https://rickandmortyapi.com/'

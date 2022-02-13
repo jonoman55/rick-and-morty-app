@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { AppHeader, AnchorDiv, PortalDiv, LogoDiv, ThumbDiv, imageStyles } from '../styled/Header.styled';
+import { ToolTip } from '../controls';
 import { ThemeSwitch } from '../ThemeSwitch';
 import { toggleTheme } from '../../features/themeSlice';
 import { useBreakpoints } from '../../hooks/useBreakpoints';
@@ -17,25 +18,31 @@ const Header = () => {
         <AppHeader elevation={2} position='static' sx={{ borderBottomStyle: 'none' }}>
             <AnchorDiv component='div' id='back-to-top-anchor' disableGutters={matches}>
                 <PortalDiv sx={{ justifyContent: !matches ? 'flex-start' : 'center' }}>
-                    <Box
-                        component='img'
-                        src={portal}
-                        alt='portal'
-                        sx={{ height: 48, width: 48 }}
+                    <ToolTip title='Warp Portal' placement='bottom' component={
+                        <Box
+                            component='img'
+                            src={portal}
+                            alt='portal'
+                            sx={{ height: 48, width: 48 }}
+                        />}
                     />
                 </PortalDiv>
                 <LogoDiv component={NavLink} to='/'>
-                    <Box
-                        component='img'
-                        src={logo}
-                        alt='logo'
-                        sx={{ ...imageStyles(matches) }}
+                    <ToolTip title='Home' placement='bottom' component={
+                        <Box
+                            component='img'
+                            src={logo}
+                            alt='logo'
+                            sx={{ ...imageStyles(matches) }}
+                        />}
                     />
                 </LogoDiv>
                 <ThumbDiv sx={{ justifyContent: !matches ? 'flex-end' : 'center' }}>
-                    <ThemeSwitch
-                        checked={theme.darkTheme}
-                        onChange={() => dispatch(toggleTheme())}
+                    <ToolTip title={theme.darkTheme ? 'Light Mode' : 'Dark Mode'} placement='bottom' component={
+                        <ThemeSwitch
+                            checked={theme.darkTheme}
+                            onChange={() => dispatch(toggleTheme())}
+                        />}
                     />
                 </ThumbDiv>
             </AnchorDiv>

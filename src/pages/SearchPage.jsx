@@ -74,7 +74,7 @@ const SearchPage = () => {
             </Container>
             {preview && (
                 <Container maxWidth='md'>
-                    <Paper elevation={2} sx={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                    <Paper elevation={2} sx={{ p: 2, m: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                         <Typography component='h5' variant='h6' sx={{ m: 1 }}>
                             Character Count: {characters?.length}
                         </Typography>
@@ -136,7 +136,7 @@ const UnderConstruction = ({ preview, onClick }) => (
                 <Typography component='h4' variant='h5' paragraph gutterBottom sx={{ color: 'primary.contrastText', textAlign: 'center' }}>
                     Under Construction
                 </Typography>
-                <Button onClick={onClick} sx={{ my: 1 }}>{preview ? 'Hide' : 'Preview'}</Button>
+                <Button onClick={onClick} sx={{ my: 1, width: 125 }}>{preview ? 'Hide' : 'Preview'}</Button>
             </Card>
         </Container>
     </Box>

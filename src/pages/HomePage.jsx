@@ -8,7 +8,7 @@ import noobNoob from '../images/noob-noob.png';
 const HomePage = () => (
     <Box sx={{ my: 4 }}>
         <Container maxWidth='sm'>
-            <Card elevation={2} sx={{ p: 2 }}>
+            <Card elevation={2} sx={{ p: 2, m: 1 }}>
                 <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Box component='img' src={rickAvatar} alt='' sx={{ height: 64, width: 64 }} />
                     <Typography component='p' sx={{ fontWeight: 700, fontSize: 16, textAlign: 'center', width: '100%' }}>Explore</Typography>

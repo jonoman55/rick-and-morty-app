@@ -8,7 +8,8 @@ import {
     SmartToy as Humanoid,
     BugReport as Bug,
     FlutterDash as PoopyButtHole,
-    Pets as Animal
+    Pets as Animal,
+    Adb as Alien2,
 } from '@mui/icons-material';
 import {
     FaRobot as Robot,
@@ -96,6 +97,11 @@ const IconArray = () => (
             <Icon
                 component={Cronenberg}
                 sx={{ color: 'custom.cron', width: 'auto' }}
+            />
+            {/* Alien2 */}
+            <Icon
+                component={Alien2}
+                sx={{ color: 'custom.main', width: 'auto' }}
             />
             {/* Dead */}
             <Icon

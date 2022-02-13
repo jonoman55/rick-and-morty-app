@@ -4,7 +4,7 @@ import { KeyboardArrowUp } from '@mui/icons-material';
 const zoomBoxStyles = {
     position: 'fixed',
     bottom: 100,
-    right: 15,
+    right: 25,
 };
 
 const UpIcon = styled(Fab)(({ theme }) => ({
@@ -41,7 +41,7 @@ function ScrollTop(props) {
     }; 
     return (
         <Zoom in={trigger}>
-            <Box role='presentation' sx={zoomBoxStyles} onClick={handleClick}>
+            <Box role='presentation' onClick={handleClick} sx={zoomBoxStyles}>
                 {children}
             </Box>
         </Zoom>

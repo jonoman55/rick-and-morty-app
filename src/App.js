@@ -10,6 +10,7 @@ const Routes = lazy(() => import('./routes'));
 // TODO : Create PortalPage
 // TODO : Fix project file folder structure
 // TODO : Convert all components to styled components
+// TODO : Remove any console.logs in the project when site is finished
 const App = () => {
     const theme = useSelector((state) => state.theme);
     const activeTheme = createTheme(theme.darkTheme ? darkTheme : lightTheme);

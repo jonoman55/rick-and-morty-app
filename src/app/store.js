@@ -4,6 +4,7 @@ import { appSlice } from '../features/appSlice';
 import { themeSlice } from '../features/themeSlice';
 import { logger } from '../middleware/logger';
 
+// TODO : Remove the logger middleware after testing is complete
 export const store = configureStore({
     reducer: {
         app: appSlice.reducer,
@@ -14,6 +15,6 @@ export const store = configureStore({
         serializableCheck: false,
     }).concat(
         rickAndMortyApi.middleware,
-        logger,
+        process.env.NODE_ENV !== 'production' && logger,
     ),
 });
