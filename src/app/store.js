@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { rickAndMortyApi } from '../services/rickAndMortyApi';
 import { appSlice } from '../features/appSlice';
 import { themeSlice } from '../features/themeSlice';
-import { logger } from '../middleware/logger';
+// import { logger } from '../middleware/logger';
 
 // TODO : Remove the logger middleware after testing is complete
 export const store = configureStore({
@@ -15,6 +15,6 @@ export const store = configureStore({
         serializableCheck: false,
     }).concat(
         rickAndMortyApi.middleware,
-        process.env.NODE_ENV !== 'production' && logger,
+        // process.env.NODE_ENV !== 'production' && logger,
     ),
 });
