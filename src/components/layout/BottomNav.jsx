@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, BottomNavigation, BottomNavigationAction } from '@mui/material';
+import { BottomNavContainer, BottomNavigation, BottomNavigationAction } from '../styled/BottomNav.styled';
 import {
     Home as HomeIcon,
     Search as SearchIcon,
@@ -11,7 +11,7 @@ import {
 import { usePathname } from '../../hooks/usePathname';
 import { useBreakpoints } from '../../hooks/useBreakpoints';
 
-export default function BottomNav() {
+const BottomNav = () => {
     const matches = useBreakpoints('lg', 'up');
     const navigate = useNavigate();
     const pathname = usePathname();
@@ -36,24 +36,12 @@ export default function BottomNav() {
     }, [value, pathname]);
 
     return pathname !== '/' && (
-        <Box sx={{ width: '100%', height: 'auto', mt: 6 }}>
+        <BottomNavContainer>
             <BottomNavigation
                 showLabels={matches}
                 value={value}
                 onChange={(event, newValue) => {
                     setValue(newValue);
-                }}
-                sx={{
-                    height: 75, width: '100%',
-                    '& .MuiBottomNavigationAction-root': {
-                        color: 'primary.contrastText',
-                    },
-                    '& .MuiBottomNavigationAction-root.Mui-selected': {
-                        color: 'custom.main'
-                    },
-                    '& label': {    
-                        color: 'primary.contrastText',
-                    }
                 }}
             >
                 <BottomNavigationAction label="Home" icon={<HomeIcon />} onClick={() => navigate('/')} />
@@ -62,6 +50,8 @@ export default function BottomNav() {
                 <BottomNavigationAction label="Episodes" icon={<EpisodesIcon />} onClick={() => navigate('/episodes')} />
                 <BottomNavigationAction label="Search" icon={<SearchIcon />} onClick={() => navigate('/search')} />
             </BottomNavigation>
-        </Box>
+        </BottomNavContainer>
     );
 };
+
+export default BottomNav;
