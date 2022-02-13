@@ -7,11 +7,10 @@ import CharacterCard from './CharacterCard';
 import NavCard from './NavCard';
 import Spinner from './Spinner';
 import Pagination from './Pagination';
-import { setPage } from '../features/rickAndMortySlice';
+import { setPage } from '../features/appSlice';
 import { useGetCharactersQuery } from '../services/rickAndMortyApi';
 
 // TODO : Finish styling this component
-// TODO : Make pagination mobile friendly
 const CharacterGrid = () => {
     const location = useLocation();
     const query = new URLSearchParams(location.search);
@@ -51,12 +50,7 @@ const CharacterGrid = () => {
                         <NavCard />
                     </Grid>
                 </Grid>
-                <Box sx={{ p: 1, mt: 4, mb: 1 }}>
-                    <Pagination
-                        count={count}
-                        currentPage={currentPage}
-                    />
-                </Box>
+                <Pagination count={count} currentPage={currentPage} />
             </Paper>
         </Box>
     );

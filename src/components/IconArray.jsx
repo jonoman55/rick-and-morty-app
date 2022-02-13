@@ -25,6 +25,7 @@ import { RiAliensFill as Alien } from 'react-icons/ri';
 import { RnMSvgIcon } from '../images/RickAndMortyIcon';
 
 // TODO : Figure out how to use this to sort characters
+// TODO : Remove any unused icons
 // Icon Links
 // MUI List Component: https://mui.com/components/lists/
 // MUI Icon component: https://mui.com/components/icons/

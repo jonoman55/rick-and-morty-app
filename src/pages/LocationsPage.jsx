@@ -1,12 +1,13 @@
 import { Box, Container, Card, CardMedia, Typography } from '@mui/material';
+import { Construction as ConstructionIcon } from '@mui/icons-material';
 
 // TODO : Finish styling this page
 // TODO : Create reusable Grid Component from CharactersPage to use in this page and Episodes
 const LocationsPage = () => (
-    <Box sx={{ mt: 4 }}>
+    <Box sx={{ my: 4 }}>
         <Container maxWidth='sm'>
             <Card elevation={2} sx={{ p: 2, display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center' }}>
-                <Typography component='h4' variant='h5' sx={{ color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
+                <Typography component='h4' variant='h5' gutterBottom sx={{ color: 'primary.contrastText', textAlign: 'center' }}>
                     Locations
                 </Typography>
                 <CardMedia
@@ -15,6 +16,10 @@ const LocationsPage = () => (
                     alt=''
                     sx={{ p: 1, borderRadius: (theme) => theme.shape.borderRadius, objectFit: 'fill' }}
                 />
+                <Box component={ConstructionIcon} sx={{ color: 'custom.main', height: 64, width: 64, py: 1 }} />
+                <Typography component='h4' variant='h5' gutterBottom sx={{ color: 'primary.contrastText', textAlign: 'center' }}>
+                    Under Construction
+                </Typography>
             </Card>
         </Container>
     </Box>

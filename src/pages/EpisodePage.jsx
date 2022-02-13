@@ -22,9 +22,9 @@ const EpisodePage = () => {
     console.log(episode);
     
     return isLoading ? <Spinner /> : (
-        <Box sx={{ p: 2 }}>
-            <Container sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center' }} maxWidth='md'>
-                <Card elevation={2} sx={{ p: 1 }}>
+        <Box sx={{ my: 4 }}>
+            <Container maxWidth='sm'>
+                <Card elevation={2} sx={{ p: 2, display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center' }}>
                     <Typography component='h4' variant='h5' sx={{color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>{episode.name}</Typography>
                     <Stack direction='row' spacing={2} justifyContent='center' sx={{ mt: 4, mb: 2 }}>
                         <Button variant='contained' LinkComponent={Link} href='/'>Home</Button>

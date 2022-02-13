@@ -12,15 +12,16 @@ const getLocationImg = (id) => {
         default:
             return 'https://hbomax-images.warnermediacdn.com/2021-06/ricky-and-morty-1200x675.jpg';
     }
-}
+};
 
 // TODO : Create a CharacterDetails component for this page and finish styling
 // TODO : Incorporate pictures from: https://rickandmorty.fandom.com/wiki/Category:Locations
-const CharacterPage = () => {
+const LocationPage = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { data, isLoading } = useGetLocationByIdQuery(id);
     const [location, setLocation] = useState({});
+    const image = getLocationImg(parseInt(id));
 
     useEffect(() => {
         if (!isLoading) {
@@ -32,26 +33,34 @@ const CharacterPage = () => {
     console.log(location);
     
     return isLoading ? <Spinner /> : (
-        <Box sx={{ mt: 4 }}>
+        <Box sx={{ my: 4 }}>
             <Container maxWidth='sm'>
                 <Card elevation={2} sx={{ p: 2, display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center' }}>
-                    <Typography component='h4' variant='h5' sx={{ color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
-                        {location.name}
+                    <Typography component='h4' variant='h5' paragraph gutterBottom sx={{ color: 'primary.contrastText', textAlign: 'center' }}>
+                        {location?.name}
                     </Typography>
-                    <Typography component='h5' variant='subtitle1' sx={{ color: 'text.secondary', textAlign: 'center' }} gutterBottom>
-                        {location.type}
-                    </Typography>
-                    <CardMedia
-                        component='img'
-                        height={251}
-                        src={`${getLocationImg(parseInt(id))}`}
-                        alt=''
-                        sx={{ p: 1, borderRadius: (theme) => theme.shape.borderRadius }}
-                    />
+                    <Box sx={{ p: 1 }}>
+                        <CardMedia
+                            component='img'
+                            height='100%'
+                            width='100%'
+                            src={`${image}`}
+                            alt=''
+                            sx={{
+                                p: 0, border: `1px solid black`,
+                                borderRadius: (theme) => theme.shape.borderRadius,
+                            }}
+                        />
+                    </Box>
                     <CardContent>
-                        <Typography component='p' variant='body1' sx={{ color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
-                            Dimension: {location.dimension}
+                        <Typography component='h5' variant='body1' sx={{ color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
+                            Type: {location?.type}
                         </Typography>
+                        {location?.dimension && (
+                            <Typography component='p' variant='body1' sx={{ color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
+                                Dimension: {location?.dimension}
+                            </Typography>
+                        )}
                     </CardContent>
                     <CardActions>
                         <Stack direction='row' spacing={2} justifyContent='center' sx={{ mt: 4, mb: 2 }}>
@@ -65,4 +74,4 @@ const CharacterPage = () => {
     );
 };
 
-export default CharacterPage;
+export default LocationPage;

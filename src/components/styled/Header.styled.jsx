@@ -16,6 +16,7 @@ export const LogoDiv = styled(Box)`
     flex-direction: row;
     flex-wrap: nowrap;
     padding: 8px;
+    margin: 8px;
 `;
 
 export const ThumbDiv = styled(Box)`
@@ -26,9 +27,10 @@ export const ThumbDiv = styled(Box)`
     align-items: center;
 `;
 
-export const AppHeader = styled(AppBar)`
-    margin-bottom: 0px;
-`;
+export const AppHeader = styled(AppBar)(({ theme }) => ({
+    marginBottom: theme.spacing(0),
+    backgroundColor: theme.palette.mode === 'light' && '#fff',
+}));
 
 export const AnchorDiv = styled(Toolbar)`
     width: 100%;
@@ -41,10 +43,10 @@ export const AnchorDiv = styled(Toolbar)`
 export const imageStyles = (matches) => {
     if (!matches) {
         return {
-            height: 100, width: 336
+            height: 100, width: 330 // dimensions for desktop
         };
     }
     return {
-        height: 75, width: 225
+        height: 60, width: 200 // dimensions for mobile
     };
 };

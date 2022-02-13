@@ -1,9 +1,66 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
-import { Box, Container, Stack, Typography, Card, CardContent, CardActions, CardMedia } from '@mui/material';
+import { styled, Box, Container, Stack, Typography, Card, CardContent, CardActions, CardMedia } from '@mui/material';
 import { Button } from '../components/controls';
 import Spinner from '../components/Spinner';
 import { useGetCharacterByIdQuery } from '../services/rickAndMortyApi';
+
+const StyledNavLink = styled(Typography)(({ theme }) => ({
+    textDecoration: 'none',
+    color: theme.palette.text.secondary,
+    textAlign: 'center',
+    '&:hover': {
+        color: theme.palette.custom.main,
+    },
+}));
+
+const StyledText = styled(Typography)(({ theme }) => ({
+    textDecoration: 'none',
+    color: theme.palette.text.secondary,
+    textAlign: 'center',
+}));
+
+const isUrl = (url) => {
+    if (url?.startsWith('https'))
+        return true;
+    return false;
+};
+
+const createLink = (url) => `/locations/${url.split('/')[5]}`;
+
+const Origin = ({ character }) => {
+    const link = createLink(character?.origin?.url);
+    console.log(link);
+    if (isUrl(character?.origin?.url)) {
+        return (
+            <StyledNavLink component={NavLink} to={`${link}`} variant='subtitle1' gutterBottom>
+                {character?.origin?.name}
+            </StyledNavLink>
+        );
+    }
+    else return (
+        <StyledText component='p' variant='subtitle1' gutterBottom>
+            {character?.origin?.name}
+        </StyledText>
+    );
+};
+
+const Location = ({ character }) => {
+    const link = createLink(character?.location?.url);
+    console.log(link);
+    if (isUrl(character?.location?.url)) {
+        return (
+            <StyledNavLink component={NavLink} to={`${link}`} variant='body1' gutterBottom>
+                Last Seen: {character?.location?.name}
+            </StyledNavLink>
+        );
+    }
+    else return (
+        <StyledText component='p' variant='body1' gutterBottom>
+            Last Seen: {character?.location?.name}
+        </StyledText>
+    );
+};
 
 // TODO : Create a CharacterDetails component for this page and finish styling
 const CharacterPage = () => {
@@ -22,25 +79,15 @@ const CharacterPage = () => {
     console.log(character);
     
     return isLoading ? <Spinner /> : (
-        <Box sx={{ p: 2 }}>
+        <Box sx={{ my: 4 }}>
             <Container maxWidth='sm'>
-                <Card elevation={2} sx={{
-                    p: 2, width: 'auto', display: 'flex', flexDirection: 'column', flexWrap: 'nowrap',
-                    justifyContent: 'center', alignItems: 'center', '& .MuiCardContent-root:last-child': { pb: 0 }
-                }}>
+                <Card elevation={2} sx={{ p: 2, width: 'auto', display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center' }}>
                     <Typography component='h4' variant='h5' gutterBottom sx={{ color: 'primary.contrastText', textAlign: 'center' }}>
                         {character?.name}
                     </Typography>
-                    <Typography component={NavLink} to={`/locations/${character?.origin?.url.slice(-1)}`} variant='subtitle1' gutterBottom sx={{
-                        textDecoration: 'none',
-                        color: 'text.secondary',
-                        textAlign: 'center',
-                        '&:hover': {
-                            color: 'custom.main'
-                        }
-                    }}>
-                        {character?.origin?.name}
-                    </Typography>
+                    {character?.origin?.name && (
+                        <Origin character={character} />
+                    )}
                     <Box sx={{ p: 1 }}>
                         <CardMedia
                             component='img'
@@ -58,16 +105,9 @@ const CharacterPage = () => {
                         <Typography component='p' variant='body1' sx={{ mt: 1, color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
                             Status: {character?.status}
                         </Typography>
-                        <Typography component={NavLink} to={`/locations/${character?.location?.url.slice(-1)}`} variant='body1' gutterBottom sx={{
-                            textDecoration: 'none',
-                            color: 'primary.contrastText',
-                            textAlign: 'center',
-                            '&:hover': {
-                                color: 'custom.main'
-                            }
-                        }}>
-                            Last Seen: {character?.location?.name}
-                        </Typography>
+                        {character?.location?.name && (
+                            <Location character={character} />
+                        )}
                     </CardContent>
                     <CardActions>
                         <Stack direction='row' spacing={2} justifyContent='center' sx={{ mt: 4, mb: 2 }}>

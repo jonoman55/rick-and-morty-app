@@ -5,11 +5,9 @@ import rickImg from '../images/pixel-rick.png';
 
 // TODO : Convert into styled components
 const NotFoundPage = () => (
-    <Box sx={{ p: 2, mt: 4 }}>
+    <Box sx={{ my: 4 }}>
         <Container maxWidth='xs'>
-            <Card elevation={2} sx={{
-                p: 2, width: '100%', display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center'
-            }}>
+            <Card elevation={2} sx={{ p: 2, width: '100%', display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center' }}>
                 <Typography component='h4' variant='h5' sx={{ my: 2, color: 'primary.contrastText', fontWeight: 'bold' }}>
                     404 - Page Not Found
                 </Typography>

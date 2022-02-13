@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Box } from '@mui/material';
-import { AppHeader, AnchorDiv, PortalDiv, LogoDiv, ThumbDiv, imageStyles } from './styled/Header.styled';
-import { ThemeSwitch } from './ThemeSwitch';
-import { toggleTheme } from '../features/themeSlice';
-import { useBreakpoints } from '../hooks/useBreakpoints';
-import logo from '../images/logo.png';
-import portal from '../images/portal.gif';
+import { AppHeader, AnchorDiv, PortalDiv, LogoDiv, ThumbDiv, imageStyles } from '../styled/Header.styled';
+import { ThemeSwitch } from '../ThemeSwitch';
+import { toggleTheme } from '../../features/themeSlice';
+import { useBreakpoints } from '../../hooks/useBreakpoints';
+import logo from '../../images/logo.png';
+import portal from '../../images/portal.gif';
 
 // TODO : Implement functionality for the portal icon
 const Header = () => {
