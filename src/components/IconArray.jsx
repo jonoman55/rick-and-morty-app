@@ -22,7 +22,6 @@ import {
     GiBrainTentacle as Cronenberg
 } from 'react-icons/gi';
 import { RiAliensFill as Alien } from 'react-icons/ri';
-import { RnMSvgIcon } from '../images/RickAndMortyIcon';
 
 // TODO : Figure out how to use this to sort characters
 // TODO : Remove any unused icons
@@ -38,11 +37,6 @@ const IconArray = () => (
             p: 2, mb: 2, display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: 1.5,
             justifyContent: 'space-evenly', alignItems: 'center', '& :not(style)+:not(style)': { mt: 0 }
         }}>
-            {/* Default */}
-            <Icon
-                component={RnMSvgIcon}
-                sx={{ color: 'custom.main', height: 24, width: 24 }}
-            />
             {/* Alien */}
             <Icon
                 component={Alien}

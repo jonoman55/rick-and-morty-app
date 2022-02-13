@@ -28,10 +28,11 @@ const custom = {
   blue: '#147af0',
   teal: '#27ebd1',
   pink: '#dc5ffc',
-  humanoid: '#ffab55', //'#00b1c9',
+  humanoid: '#ffab55',
   robot: '#cddbdd',
   cron: '#ecbd75',
-  animal: '#bd6e15'
+  animal: '#bd6e15',
+  thumbBlue: '#00b1c9'
 };
   
 const scrollBodyLight = {

@@ -7,7 +7,9 @@ import { lightTheme, darkTheme } from './theme';
 
 const Routes = lazy(() => import('./routes'));
 
-// TODO : Implement a Footer and PortalPage
+// TODO : Create PortalPage
+// TODO : Fix project file folder structure
+// TODO : Convert all components to styled components
 const App = () => {
     const theme = useSelector((state) => state.theme);
     const activeTheme = createTheme(theme.darkTheme ? darkTheme : lightTheme);

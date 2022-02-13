@@ -1,23 +1,24 @@
+// eslint-disable-next-line
 import { styled, useTheme, useMediaQuery, Box } from '@mui/material';
 import backgroundImage from '../../images/site-background.png';
 
-export const FlexContainer = styled(Box)(({ theme }) => ({
-    width: '100%',
-    height: '100%',
-    minHeight: useMediaQuery(theme.breakpoints.up('sm'))
-        ? '68.5vh' : '100%',
-}));
+// TODO : Implement a better container once all pages are complete
+// export const Container = styled(Box)(({ theme }) => ({
+//     width: '100%',
+//     height: '100%',
+//     minHeight: useMediaQuery(theme.breakpoints.up('sm'))
+//         ? '68.5vh' : '100%',
+// }));
 
 export const Container = styled(Box)(({ theme }) => ({
     width: '100%',
     height: '100%',
-    minHeight: '68.1vh',
-    marginBottom: theme.spacing(
-        useMediaQuery(theme.breakpoints.up('sm')) ? 0.5 : 4.75
-    ),
+    // minHeight: '68.5vh',
+    // marginBottom: theme.spacing(
+    //     useMediaQuery(theme.breakpoints.up('sm')) ? 0.5 : 4.75
+    // ),
 }));
 
-// TODO : Implement a better container once all pages are complete
 // export const Container = styled(Box)`
 //     width: 100%;
 //     height: 100%;

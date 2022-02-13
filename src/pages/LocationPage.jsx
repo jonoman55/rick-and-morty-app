@@ -14,7 +14,8 @@ const getLocationImg = (id) => {
     }
 };
 
-// TODO : Create a CharacterDetails component for this page and finish styling
+// TODO : Finish styling this page
+// TODO : Create a LocationDetails component for this page
 // TODO : Incorporate pictures from: https://rickandmorty.fandom.com/wiki/Category:Locations
 const LocationPage = () => {
     const navigate = useNavigate();

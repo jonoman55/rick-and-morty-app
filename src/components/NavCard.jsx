@@ -2,9 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { Stack, Card, CardContent } from '@mui/material';
 import { Button } from '../components/controls';
 
-// TODO : Convert to styled components
-// TODO : Make mobile friendly
-// convert the stack into a grid and remove width on buttons
+// TODO : Remove this component if not used
 const NavCard = () => (
     <Card elevation={2} sx={{ bgcolor: 'primary.main', display: 'flex', minHeight: 150 }}>
         <CardContent sx={{

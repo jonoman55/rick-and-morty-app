@@ -1,8 +1,7 @@
 import { Box, Container, Card, CardMedia, Typography } from '@mui/material';
 import { Construction as ConstructionIcon } from '@mui/icons-material';
 
-// TODO : Finish styling this page
-// TODO : Create reusable Grid Component from CharactersPage to use in this page and Episodes
+// TODO : Finish implementing this page
 const LocationsPage = () => (
     <Box sx={{ my: 4 }}>
         <Container maxWidth='sm'>

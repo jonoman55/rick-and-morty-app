@@ -5,11 +5,11 @@ import { statusColor, genderColor, speciesColor } from '../helpers/colors';
 import { FlexText } from './controls';
 
 // TODO : Finish styling and convert to styled components
-// TODO : Make mobile friendly
 const CharacterCard = ({ character }) => (
     <Card elevation={2} sx={{
         display: 'flex', bgcolor: 'primary.main', '&:hover': {
-            bgcolor: (theme) => theme.palette.mode === 'dark' ? 'custom.disabled' : 'custom.darkDisabled', opacity: 0.8
+            bgcolor: (theme) => theme.palette.mode === 'dark'
+                ? 'custom.disabled' : 'custom.darkDisabled', opacity: 0.8
         }
     }}>
         <CardMedia

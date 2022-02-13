@@ -14,7 +14,7 @@ const Header = () => {
     const theme = useSelector((state) => state.theme);
     const dispatch = useDispatch();
     return (
-        <AppHeader elevation={2} position='static'>
+        <AppHeader elevation={2} position='static' sx={{ borderBottomStyle: 'none' }}>
             <AnchorDiv component='div' id='back-to-top-anchor' disableGutters={matches}>
                 <PortalDiv sx={{ justifyContent: !matches ? 'flex-start' : 'center' }}>
                     <Box

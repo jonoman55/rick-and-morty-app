@@ -4,13 +4,12 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Box, Grid, Paper } from '@mui/material';
 import IconArray from './IconArray';
 import CharacterCard from './CharacterCard';
-import NavCard from './NavCard';
 import Spinner from './Spinner';
 import Pagination from './Pagination';
 import { setPage } from '../features/appSlice';
 import { useGetCharactersQuery } from '../services/rickAndMortyApi';
 
-// TODO : Finish styling this component
+// TODO : Create reusable Grid Component from this page to use in the EpisodesPage and LocationsPage pages
 const CharacterGrid = () => {
     const location = useLocation();
     const query = new URLSearchParams(location.search);
@@ -38,7 +37,7 @@ const CharacterGrid = () => {
         <Box>
             <IconArray />
             <Paper elevation={2} sx={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-                <Grid container spacing={4}>
+                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {data?.results?.map((character, index) => (
                         <Grid item key={index} component={NavLink} to={`/characters/${character?.id}`} xs={12} sm={12} md={6} lg={6} xl={4} sx={{
                             textDecoration: 'none', color: 'primary.contrastText'
@@ -46,9 +45,6 @@ const CharacterGrid = () => {
                             <CharacterCard character={character} />
                         </Grid>
                     ))}
-                    <Grid item xs={12} sm={12} md={6} lg={6} xl={4}>
-                        <NavCard />
-                    </Grid>
                 </Grid>
                 <Pagination count={count} currentPage={currentPage} />
             </Paper>

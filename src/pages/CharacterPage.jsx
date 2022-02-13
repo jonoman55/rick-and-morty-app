@@ -62,7 +62,8 @@ const Location = ({ character }) => {
     );
 };
 
-// TODO : Create a CharacterDetails component for this page and finish styling
+// TODO : Finish styling this page
+// TODO : Create a CharacterDetails component for this page
 const CharacterPage = () => {
     const navigate = useNavigate();
     const { id } = useParams();

@@ -5,7 +5,9 @@ import { Button } from '../components/controls';
 import Spinner from '../components/Spinner';
 import { useGetEpisodeByIdQuery } from '../services/rickAndMortyApi';
 
-// TODO : Finish implementing this page
+// TODO : Finish implementing and styling this page
+// TODO : Create a EpisodeDetails component for this page
+// TODO : Incorporate pictures from: https://rickandmorty.fandom.com/wiki/Category:Episodes
 const EpisodePage = () => {
     const navigate = useNavigate();
     const { id } = useParams();

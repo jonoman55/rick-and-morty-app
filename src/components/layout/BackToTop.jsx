@@ -3,7 +3,7 @@ import { KeyboardArrowUp } from '@mui/icons-material';
 
 const zoomBoxStyles = {
     position: 'fixed',
-    bottom: 150,
+    bottom: 100,
     right: 15,
 };
 

@@ -3,7 +3,6 @@ import { Box, Typography, Card, Container, CardMedia } from '@mui/material';
 import { Button } from '../components/controls';
 import rickImg from '../images/pixel-rick.png';
 
-// TODO : Convert into styled components
 const NotFoundPage = () => (
     <Box sx={{ my: 4 }}>
         <Container maxWidth='xs'>
