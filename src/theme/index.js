@@ -32,7 +32,8 @@ const custom = {
   robot: '#cddbdd',
   cron: '#ecbd75',
   animal: '#bd6e15',
-  thumbBlue: '#00b1c9'
+  thumbBlue: '#00b1c9',
+  seen: '#f2bb1b',
 };
   
 const scrollBodyLight = {

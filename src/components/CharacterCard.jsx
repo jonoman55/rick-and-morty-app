@@ -16,7 +16,7 @@ const CharacterCard = ({ character }) => (
             component='img'
             sx={{ height: 'auto', width: 150 }}
             image={character.image}
-            alt=''
+            alt='character'
         />
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <CardContent sx={{ flex: '1 0 auto' }}>

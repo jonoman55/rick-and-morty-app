@@ -11,8 +11,9 @@ import {
     Pets as Animal,
     Coronavirus as Disease
 } from '@mui/icons-material';
+import { FaSkullCrossbones as Dead, FaSmile as Alive } from 'react-icons/fa';
+import { RiGenderlessLine as Genderless } from 'react-icons/ri';
 
-// TODO : Update the Icons to match the IconsArray
 export const SpeciesIcon = ({ species, ...other }) => {
     switch (species) {
         case 'Human':
@@ -47,7 +48,7 @@ export const GenderIcon = ({ gender, ...other }) => {
         case 'Female':
             return <Female {...other} />;
         case 'Genderless':
-            return <Unknown {...other} />;
+            return <Genderless {...other} />;
         case 'unknown':
             return <Unknown {...other} />;
         default:
@@ -55,16 +56,15 @@ export const GenderIcon = ({ gender, ...other }) => {
     }
 };
 
-// TODO : Finish implementing this Icon component
 export const StatusIcon = ({ status, ...other }) => {
     switch (status) {
         case 'Alive':
-            return;
+            return <Alive {...other} />;
         case 'Dead':
-            return;
+            return <Dead  {...other} />;
         case 'unknown':
             return <Unknown {...other} />;
         default:
             return <NotFound {...other} />;
     }
-}
+};

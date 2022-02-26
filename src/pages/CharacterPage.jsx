@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
-import { styled, Box, Container, Stack, Typography, Card, CardContent, CardActions, CardMedia } from '@mui/material';
+import { styled, Box, Container, Stack, Typography, Card, CardContent, CardActions, CardMedia, Paper, Icon } from '@mui/material';
+import { Visibility } from '@mui/icons-material';
 import { Button } from '../components/controls';
 import Spinner from '../components/Spinner';
+import { StatusIcon, GenderIcon, SpeciesIcon } from '../helpers/icons';
 import { useGetCharacterByIdQuery } from '../services/rickAndMortyApi';
+import { genderColor, speciesColor, statusColor } from '../helpers/colors';
 
 const StyledNavLink = styled(Typography)(({ theme }) => ({
     textDecoration: 'none',
     color: theme.palette.text.secondary,
     textAlign: 'center',
     '&:hover': {
-        color: theme.palette.custom.main,
+        color: theme.palette.custom.seen,
     },
 }));
 
@@ -28,35 +31,50 @@ const isUrl = (url) => {
 
 const createLink = (url) => `/locations/${url.split('/')[5]}`;
 
+const originStyles = {
+    color: 'custom.main',
+    fontWeight: 'bold',
+    '&:hover': {
+        color: 'custom.darkDisabled'
+    },
+};
+
 const Origin = ({ character }) => {
     const link = createLink(character?.origin?.url);
-    console.log(link);
     if (isUrl(character?.origin?.url)) {
         return (
-            <StyledNavLink component={NavLink} to={`${link}`} variant='subtitle1' gutterBottom>
+            <StyledNavLink component={NavLink} to={`${link}`} variant='subtitle1' gutterBottom sx={originStyles}>
                 {character?.origin?.name}
             </StyledNavLink>
         );
     }
     else return (
-        <StyledText component='p' variant='subtitle1' gutterBottom>
+        <StyledText component='p' variant='subtitle1' gutterBottom sx={originStyles}>
             {character?.origin?.name}
         </StyledText>
     );
 };
 
+const linkStyles = {
+    m: 0, py: 1,
+    color: 'custom.seen',
+    fontWeight: 'bold',
+    '&:hover': {
+        color: 'custom.darkDisabled'
+    }
+};
+
 const Location = ({ character }) => {
     const link = createLink(character?.location?.url);
-    console.log(link);
     if (isUrl(character?.location?.url)) {
         return (
-            <StyledNavLink component={NavLink} to={`${link}`} variant='body1' gutterBottom>
+            <StyledNavLink component={NavLink} to={`${link}`} variant='body1' gutterBottom sx={linkStyles}>
                 Last Seen: {character?.location?.name}
             </StyledNavLink>
         );
     }
     else return (
-        <StyledText component='p' variant='body1' gutterBottom>
+        <StyledText component='p' variant='body1' gutterBottom sx={linkStyles}>
             Last Seen: {character?.location?.name}
         </StyledText>
     );
@@ -64,6 +82,7 @@ const Location = ({ character }) => {
 
 // TODO : Finish styling this page
 // TODO : Create a CharacterDetails component for this page
+// TODO : Fix last seen styles
 const CharacterPage = () => {
     const navigate = useNavigate();
     const { id } = useParams();
@@ -78,7 +97,7 @@ const CharacterPage = () => {
     }, [isLoading]);
 
     console.log(character);
-    
+
     return isLoading ? <Spinner /> : (
         <Box sx={{ my: 4 }}>
             <Container maxWidth='sm'>
@@ -102,13 +121,77 @@ const CharacterPage = () => {
                             }}
                         />
                     </Box>
-                    <CardContent>
-                        <Typography component='p' variant='body1' sx={{ mt: 1, color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
-                            Status: {character?.status}
-                        </Typography>
+                    <CardContent component={Paper} elevation={1} sx={{
+                        display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', mt: 1, bgcolor: 'primary.main',
+                        justifyContent: 'center', alignItems: 'flex-start', width: '80%', height: '100%'
+                    }}>
+                        <Box sx={{
+                            display: 'flex', flexDirection: 'row', flexWrap: 'nowrap',
+                            justifyContent: 'flex-start', alignItems: 'center', width: '100%', height: '100%'
+                        }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'center', p: 1, mx: 1 }}>
+                                <Icon sx={{ color: genderColor(character?.gender) }} >
+                                    <GenderIcon gender={character?.gender} />
+                                </Icon>
+                            </Box>
+                            <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'space-around', p: 1, mx: 1 }}>
+                                <Typography component='p' variant='body1' sx={{ mt: 1, color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
+                                    Gender:
+                                </Typography>
+                                <Typography variant='body1' sx={{ ml: 1, mt: 1, color: genderColor(character?.gender), textAlign: 'center', fontWeight: 'bold' }} gutterBottom>
+                                    {character?.gender}
+                                </Typography>
+                            </Box>
+                        </Box>
+                        <Box sx={{
+                            display: 'flex', flexDirection: 'row', flexWrap: 'nowrap',
+                            justifyContent: 'flex-start', alignItems: 'center', width: '100%', height: '100%'
+                        }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'center', p: 1, mx: 1 }}>
+                                <Icon sx={{ color: statusColor(character?.status) }} >
+                                    <StatusIcon status={character?.status} />
+                                </Icon>
+                            </Box>
+                            <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'space-around', p: 1, mx: 1 }}>
+                                <Typography component='p' variant='body1' sx={{ mt: 1, color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
+                                    Status:
+                                </Typography>
+                                <Typography variant='body1' sx={{ ml: 1, mt: 1, color: statusColor(character?.status), textAlign: 'center', fontWeight: 'bold' }} gutterBottom>
+                                    {character?.status}
+                                </Typography>
+                            </Box>
+                        </Box>
                         {character?.location?.name && (
-                            <Location character={character} />
+                            <Box sx={{
+                                display: 'flex', flexDirection: 'row', flexWrap: 'nowrap',
+                                justifyContent: 'flex-start', alignItems: 'center', width: '100%', height: '100%'
+                            }}>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
+                                    <Visibility sx={{ color: 'custom.seen' }} />
+                                </Box>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', p: 1, mx: 1 }}>
+                                    <Location character={character} />
+                                </Box>
+                            </Box>
                         )}
+                        <Box sx={{
+                            display: 'flex', flexDirection: 'row', flexWrap: 'nowrap',
+                            justifyContent: 'flex-start', alignItems: 'center', width: '100%', height: '100%'
+                        }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'center', p: 1, mx: 1 }}>
+                                <Icon sx={{ color: speciesColor(character?.species) }} >
+                                    <SpeciesIcon species={character?.species} />
+                                </Icon>
+                            </Box>
+                            <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'space-around', p: 1, mx: 1 }}>
+                                <Typography component='p' variant='body1' sx={{ mt: 1, color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
+                                    Species:
+                                </Typography>
+                                <Typography variant='body1' sx={{ ml: 1, mt: 1, color: speciesColor(character?.species), textAlign: 'center', fontWeight: 'bold' }} gutterBottom>
+                                    {character?.species}
+                                </Typography>
+                            </Box>
+                        </Box>
                     </CardContent>
                     <CardActions>
                         <Stack direction='row' spacing={2} justifyContent='center' sx={{ mt: 4, mb: 2 }}>
