@@ -60,7 +60,8 @@ const linkStyles = {
     color: 'custom.seen',
     fontWeight: 'bold',
     '&:hover': {
-        color: 'custom.darkDisabled'
+        color: 'custom.darkDisabled',
+        cursor: 'pointer'
     }
 };
 
