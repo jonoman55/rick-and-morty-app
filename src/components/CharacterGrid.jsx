@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Box, Grid, Paper } from '@mui/material';
+
+import { Spinner } from './Spinner';
 import IconArray from './IconArray';
 import CharacterCard from './CharacterCard';
-import Spinner from './Spinner';
 import Pagination from './Pagination';
-import { setPage } from '../features/appSlice';
+import { setPage } from '../reducers/appSlice';
 import { useGetCharactersQuery } from '../services/rickAndMortyApi';
 
 // TODO : Create reusable Grid Component from this page to use in the EpisodesPage and LocationsPage pages

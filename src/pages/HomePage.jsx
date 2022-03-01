@@ -1,10 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import { Box, Stack, Container, Card, Typography } from '@mui/material';
+
 import { Button } from '../components/controls';
 import rickAvatar from '../images/rick-avatar.png';
 import noobNoob from '../images/noob-noob.png';
 
 // TODO : Finish styling this page
+// TODO : Add two png images to the bottom of the card
+// TODO : Convert to styled components and move to cards folder
 const HomePage = () => (
     <Box sx={{ my: 4 }}>
         <Container maxWidth='sm'>

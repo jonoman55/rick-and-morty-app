@@ -1,10 +1,7 @@
-import { Box, CircularProgress } from '@mui/material';
+import { SpinnerBox, SpinnerProgress } from './styled/Spinner.styled';
 
-// TODO : Covert to styled components
-const Spinner = () => (
-    <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center', height: '82vh', width: '100%' }}>
-        <CircularProgress sx={{ color: 'custom.main' }} />
-    </Box>
+export const Spinner = () => (
+    <SpinnerBox>
+        <SpinnerProgress />
+    </SpinnerBox>
 );
-
-export default Spinner;

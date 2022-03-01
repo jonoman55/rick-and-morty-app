@@ -1,4 +1,5 @@
 import { Box, Container } from '@mui/material';
+
 import CharacterGrid from '../components/CharacterGrid';
 
 const CharactersPage = () => (

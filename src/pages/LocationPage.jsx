@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Container, Stack, Typography, Card, CardMedia, CardContent, CardActions } from '@mui/material';
+
 import { Button } from '../components/controls';
-import Spinner from '../components/Spinner';
+import { Spinner } from '../components/Spinner';
 import { useGetLocationByIdQuery } from '../services/rickAndMortyApi';
 
 const getLocationImg = (id) => {

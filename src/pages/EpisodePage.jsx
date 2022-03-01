@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Container, Link, Stack, Typography, Card } from '@mui/material';
+
 import { Button } from '../components/controls';
-import Spinner from '../components/Spinner';
+import { Spinner } from '../components/Spinner';
 import { useGetEpisodeByIdQuery } from '../services/rickAndMortyApi';
 
 // TODO : Finish implementing and styling this page

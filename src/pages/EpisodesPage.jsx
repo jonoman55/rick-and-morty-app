@@ -2,6 +2,7 @@ import { Box, Container, Card, CardMedia, Typography } from '@mui/material';
 import { Construction as ConstructionIcon } from '@mui/icons-material';
 
 // TODO : Finish implementing this page
+// TODO : Convert to styled components and move to cards folder
 const EpisodesPage = () => (
     <Box sx={{ my: 4 }}>
         <Container maxWidth='sm'>

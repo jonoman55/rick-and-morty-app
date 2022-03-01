@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { Box, Typography, Card, Container, CardMedia } from '@mui/material';
+
 import { Button } from '../components/controls';
 import rickImg from '../images/pixel-rick.png';
 
+// TODO : Convert to styled components and move to cards folder
 const NotFoundPage = () => (
     <Box sx={{ my: 4 }}>
         <Container maxWidth='xs'>

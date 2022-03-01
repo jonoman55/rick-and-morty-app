@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Box, Container, Card, CardContent, CardMedia, Grid, Paper, Typography } from '@mui/material';
 import { Construction as ConstructionIcon } from '@mui/icons-material';
+
 import { Button } from '../components/controls';
-import Spinner from '../components/Spinner';
+import { Spinner } from '../components/Spinner';
 import SearchBar from '../components/SearchBar';
-import { setCharacters, setFilter, setSearchResults } from '../features/appSlice'; 
+import { setCharacters, setFilter, setSearchResults } from '../reducers/appSlice'; 
 import { useGetAllCharactersQuery, useGetCharactersQuery } from '../services/rickAndMortyApi';
 import { usePathname } from '../hooks/usePathname';
 import { createIdsList } from '../utils';
@@ -14,6 +15,9 @@ import { createIdsList } from '../utils';
 // TODO : Finish styling this page
 // TODO : Add a select for searching by Characters, Episodes and Locations
 // NOTE : Be careful with this page - it is possible to hit API limit if pics are included (HTTP Status - 429)
+// TODO : Try re-implementing the Autocomplete
+// NOTE : Add origin to the name for better filtering for characters Autocomplete
+// TODO : Convert to styled components and move to cards folder
 const SearchPage = () => {
     const pathname = usePathname();
     const [preview, setPreview] = useState(false);
