@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Stack, Card, CardContent } from '@mui/material';
-import { Button } from '../components/controls';
+import { Button } from '../controls';
 
 // TODO : Remove this component if not used
 const NavCard = () => (

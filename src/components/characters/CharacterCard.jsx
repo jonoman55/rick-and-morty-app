@@ -1,9 +1,9 @@
 import { Box, Card, CardContent, CardMedia, Stack } from '@mui/material';
 import { Circle as StatusIcon } from '@mui/icons-material';
 
-import { GenderIcon, SpeciesIcon } from '../helpers/icons';
-import { statusColor, genderColor, speciesColor } from '../helpers/colors';
-import { FlexText } from './controls';
+import { FlexText } from '../controls';
+import { GenderIcon, SpeciesIcon } from '../../helpers/icons';
+import { statusColor, genderColor, speciesColor } from '../../helpers/colors';
 
 // TODO : Finish styling and convert to styled components
 const CharacterCard = ({ character }) => (

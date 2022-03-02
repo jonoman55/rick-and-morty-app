@@ -2,11 +2,11 @@ import { NavLink } from 'react-router-dom';
 import { Box, Stack, Typography, CardContent, CardActions, Icon } from '@mui/material';
 import { Visibility } from '@mui/icons-material';
 
-import { Card, Name, Paper, OriginLink, StyledText, LocationLink, Image, Section, IconBox, TextBox } from './styled/CharacterDetails.styled';
-import { Button, FlexText } from './controls';
-import { StatusIcon, GenderIcon, SpeciesIcon } from '../helpers/icons';
-import { genderColor, speciesColor, statusColor } from '../helpers/colors';
-import { createLink } from '../helpers/urls';
+import { Card, Name, Paper, OriginLink, StyledText, LocationLink, Image, Section, IconBox, TextBox } from '../styled/CharacterDetails.styled';
+import { Button, FlexText } from '../controls';
+import { StatusIcon, GenderIcon, SpeciesIcon } from '../../helpers/icons';
+import { genderColor, speciesColor, statusColor } from '../../helpers/colors';
+import { createLink } from '../../helpers/urls';
 
 const CharacterDetails = ({ character, navigate }) => (
     <Card elevation={2}>

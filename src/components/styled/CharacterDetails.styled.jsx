@@ -82,7 +82,7 @@ export const Card = styled(MuiCard)(({ theme }) => ({
 export const Image = styled(CardMedia)(({ theme }) => ({
     marginTop: theme.spacing(2),
     padding: theme.spacing(0),
-    border: `1px solid black`,
+    border: `1px solid ${theme.palette.custom.black}`,
     borderRadius: theme.shape.borderRadius,
 }));
 

@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Container } from '@mui/material';
 
-import { Spinner } from '../components/Spinner';
-import CharacterDetails from '../components/CharacterDetails';
+import { Spinner } from '../components/design/Spinner';
+import { CharacterDetails } from '../components/characters';
 import { useGetCharacterByIdQuery } from '../services/rickAndMortyApi';
 
 const CharacterPage = () => {

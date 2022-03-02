@@ -2,9 +2,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Box } from '@mui/material';
 
-import { AppHeader, AnchorDiv, PortalDiv, LogoDiv, ThumbDiv, imageStyles } from '../styled/Header.styled';
 import { ToolTip } from '../controls';
-import { ThemeSwitch } from '../ThemeSwitch';
+import { AppHeader, AnchorDiv, PortalDiv, LogoDiv, ThumbDiv, imageStyles } from '../styled/Header.styled';
+import { ThemeSwitch } from '../design/ThemeSwitch';
 import { toggleTheme } from '../../reducers/themeSlice';
 import { useBreakpoints } from '../../hooks/useBreakpoints';
 import logo from '../../images/logo.png';

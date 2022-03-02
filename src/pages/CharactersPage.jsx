@@ -1,6 +1,6 @@
 import { Box, Container } from '@mui/material';
 
-import CharacterGrid from '../components/CharacterGrid';
+import { CharacterGrid } from '../components/characters';
 
 const CharactersPage = () => (
     <Box sx={{ my: 4 }}>

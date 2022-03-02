@@ -1,6 +1,7 @@
 import { IconButton } from '@mui/material';
 import { Search as SearchIcon, Clear as ClearIcon } from '@mui/icons-material';
-import { Search, SearchIconWrapper, StyledInputBase } from './styled/Search.styled';
+
+import { Search, SearchIconWrapper, StyledInputBase } from '../styled/Search.styled';
 
 const SearchBar = ({ value, onChange, onClick }) => (
     <Search>

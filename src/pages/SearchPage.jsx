@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Box, Container, Card, CardContent, CardMedia, Grid, Paper, Typography } from '@mui/material';
-import { Construction as ConstructionIcon } from '@mui/icons-material';
+import { Box, Container, Card, CardContent, Grid, Paper, Typography } from '@mui/material';
 
-import { Button } from '../components/controls';
-import { Spinner } from '../components/Spinner';
-import SearchBar from '../components/SearchBar';
+import { Spinner } from '../components/design/Spinner';
+import SearchBar from '../components/design/SearchBar';
+import { UnderConstruction } from '../components/design/UnderConstruction';
 import { setCharacters, setFilter, setSearchResults } from '../reducers/appSlice'; 
 import { useGetAllCharactersQuery, useGetCharactersQuery } from '../services/rickAndMortyApi';
 import { usePathname } from '../hooks/usePathname';
@@ -123,27 +122,27 @@ const SearchPage = () => {
     );
 };
 
-const UnderConstruction = ({ preview, onClick }) => (
-    <Box sx={{ my: 4 }}>
-        <Container maxWidth='sm'>
-            <Card elevation={2} sx={{ p: 2, display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center' }}>
-                <Typography component='h4' variant='h5' gutterBottom sx={{ color: 'primary.contrastText', textAlign: 'center' }}>
-                    Search
-                </Typography>
-                <CardMedia
-                    component='img'
-                    src='https://hbomax-images.warnermediacdn.com/2021-06/ricky-and-morty-1200x675.jpg'
-                    alt=''
-                    sx={{ p: 1, borderRadius: (theme) => theme.shape.borderRadius, objectFit: 'fill' }}
-                />
-                <Box component={ConstructionIcon} sx={{ color: 'custom.main', height: 64, width: 64, py: 1 }} />
-                <Typography component='h4' variant='h5' paragraph gutterBottom sx={{ color: 'primary.contrastText', textAlign: 'center' }}>
-                    Under Construction
-                </Typography>
-                <Button onClick={onClick} sx={{ my: 1, width: 125 }}>{preview ? 'Hide' : 'Preview'}</Button>
-            </Card>
-        </Container>
-    </Box>
-);
+// const UnderConstruction = ({ preview, onClick }) => (
+//     <Box sx={{ my: 4 }}>
+//         <Container maxWidth='sm'>
+//             <Card elevation={2} sx={{ p: 2, display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center' }}>
+//                 <Typography component='h4' variant='h5' gutterBottom sx={{ color: 'primary.contrastText', textAlign: 'center' }}>
+//                     Search
+//                 </Typography>
+//                 <CardMedia
+//                     component='img'
+//                     src='https://hbomax-images.warnermediacdn.com/2021-06/ricky-and-morty-1200x675.jpg'
+//                     alt=''
+//                     sx={{ p: 1, borderRadius: (theme) => theme.shape.borderRadius, objectFit: 'fill' }}
+//                 />
+//                 <Box component={ConstructionIcon} sx={{ color: 'custom.main', height: 64, width: 64, py: 1 }} />
+//                 <Typography component='h4' variant='h5' paragraph gutterBottom sx={{ color: 'primary.contrastText', textAlign: 'center' }}>
+//                     Under Construction
+//                 </Typography>
+//                 <Button onClick={onClick} sx={{ my: 1, width: 125 }}>{preview ? 'Hide' : 'Preview'}</Button>
+//             </Card>
+//         </Container>
+//     </Box>
+// );
 
 export default SearchPage;

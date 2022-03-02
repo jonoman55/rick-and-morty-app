@@ -1,4 +1,4 @@
-import { SpinnerBox, SpinnerProgress } from './styled/Spinner.styled';
+import { SpinnerBox, SpinnerProgress } from '../styled/Spinner.styled';
 
 export const Spinner = () => (
     <SpinnerBox>
