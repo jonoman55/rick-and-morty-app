@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { Box, Card, CardContent, CardMedia, Stack } from "@mui/material";
 // import { NavLink } from "react-router-dom";
 
@@ -21,19 +22,19 @@ const LocationCard = ({ location }) => {
                     ? 'custom.disabled' : 'custom.darkDisabled', opacity: 0.8
             }
         }}>
-            <CardMedia
+            {/* <CardMedia
                 component='img'
                 sx={{ height: 'auto', width: 150 }}
                 image={location?.image}
                 alt='location'
-            />
+            /> */}
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                     <FlexText component='div' variant='h6'>
                         {location?.name}
                     </FlexText>
                     <FlexText component='div' variant='subtitle1' color='text.secondary'>
-                        {location?.status} - {location?.species}
+                        {location?.type} - {location?.dimension}
                     </FlexText>
                 </CardContent>
                 <Stack direction='row' spacing={1} sx={{ display: 'flex', alignItems: 'center', pl: 2, pb: 1 }}>

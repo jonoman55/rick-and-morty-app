@@ -9,6 +9,7 @@ export const Paper = styled(MuiPaper)(({ theme }) => ({
 }));
 
 export const GridItem = styled(Grid)(({ theme }) => ({
+    width: '100%',
     color: theme.palette.primary.contrastText,
     textDecoration: 'none',
 }));
