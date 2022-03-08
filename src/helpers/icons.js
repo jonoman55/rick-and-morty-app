@@ -1,6 +1,10 @@
 import {
     Male,
     Female,
+    Groups as MultipleResidents,
+    Group as Residents,
+    Person as OneResident,
+    PersonOff as NoResidents,
     QuestionMark as Unknown,
     Accessibility as Human,
     Adb as Alien,
@@ -66,5 +70,50 @@ export const StatusIcon = ({ status, ...other }) => {
             return <Unknown {...other} />;
         default:
             return <NotFound {...other} />;
+    }
+};
+
+export const ResidentsIcon = ({ count, ...other }) => {
+    if (count === 1) {
+        return <OneResident {...other} />;
+    }
+    if (count > 1 && count <= 10) {
+        return <Residents {...other} />;
+    }
+    if (count > 11) {
+        return <MultipleResidents {...other} />;
+    }
+    return <NoResidents {...other} />;
+};
+
+// TODO : Finish implementing this Icon
+export const TypeIcon = ({ type }) => {
+    switch (type) {
+        case 'Planet' || type.includes('Planet'):
+            return;
+        case 'Space station':
+            return;
+        case 'Game':
+            return;
+        case 'Microverse':
+            return;
+        case 'Menagerie':
+            return;
+        case 'Fantasy town':
+            return;
+        case 'Dream':
+            return;
+        case 'Asteroid':
+            return;
+        case 'TV':
+            return;
+        case 'Resort':
+            return;
+        case 'Non-Diegetic Alternative Reality':
+            return;
+        case 'Diegesis':
+            return;
+        default:
+            return;
     }
 };

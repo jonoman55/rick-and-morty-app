@@ -12,6 +12,7 @@ const EpisodePage = lazy(() => import('../pages/EpisodePage'));
 const LocationsPage = lazy(() => import('../pages/LocationsPage'));
 const LocationPage = lazy(() => import('../pages/LocationPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
+const PortalPage = lazy(() => import('../pages/PortalPage'));
 
 const Routes = () => (
     <Router>
@@ -31,6 +32,7 @@ const Routes = () => (
                     <Route path=':id' element={<LocationPage />} />
                 </Route>
                 <Route path='/search' element={<SearchPage />} />
+                <Route path='/portal' element={<PortalPage />} />
                 <Route path='*' element={<NotFoundPage />} />
             </Switch>
         </Layout>

@@ -39,9 +39,9 @@ const LocationsGrid = () => {
   
     return isLoading ? <Spinner /> : (
         <Paper elevation={2}>
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid container spacing={2}> 
                 <ReusableGrid
-                    xs={12} sm={12} md={6} lg={6} xl={6}
+                    xs={12} sm={12} md={6} lg={3} xl={3}
                     type='locations'
                     items={data?.results}
                 />

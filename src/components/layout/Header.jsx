@@ -10,7 +10,7 @@ import { useBreakpoints } from '../../hooks/useBreakpoints';
 import logo from '../../images/logo.png';
 import portal from '../../images/portal.gif';
 
-// TODO : Implement functionality for the portal icon
+// TODO : Hide the warp portal icon when on the /portal route
 const Header = () => {
     const matches = useBreakpoints('sm', 'down');
     const theme = useSelector((state) => state.theme);
@@ -18,7 +18,7 @@ const Header = () => {
     return (
         <AppHeader elevation={2} position='static' sx={{ borderBottomStyle: 'none' }}>
             <AnchorDiv component='div' id='back-to-top-anchor' disableGutters={matches}>
-                <PortalDiv sx={{ justifyContent: !matches ? 'flex-start' : 'center' }}>
+                <PortalDiv component={NavLink} to='/portal' sx={{ justifyContent: !matches ? 'flex-start' : 'center' }}>
                     <ToolTip title='Warp Portal' placement='bottom' component={
                         <Box
                             component='img'

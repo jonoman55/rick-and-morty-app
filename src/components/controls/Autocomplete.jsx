@@ -1,7 +1,7 @@
 import { styled, Autocomplete as MuiAutocomplete } from '@mui/material';
 import { TextInput } from '.';
 
-const StyledAutocomplete = styled(MuiAutocomplete)(({ theme }) => ({
+export const StyledAutocomplete = styled(MuiAutocomplete)(({ theme }) => ({
     '& .MuiAutocomplete-popupIndicator': {
         color: theme.palette.primary.contrastText
     },
