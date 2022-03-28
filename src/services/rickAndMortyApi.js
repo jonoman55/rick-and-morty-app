@@ -4,13 +4,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 // https://rickandmortyapi.com/documentation/
 export const rickAndMortyApi = createApi({
     reducerPath: 'rickAndMortyApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://rickandmortyapi.com/api/' }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'https://rickandmortyapi.com/api/'
+    }),
     tagTypes: ['Characters', 'Locations', 'Episodes'],
     endpoints: (builder) => ({
         getAllCharacters: builder.query({
             query: (ids) => `character/${ids}`,
-            providesTags: ['Characters'],
             keepUnusedDataFor: 5,
+            providesTags: ['Characters'],
         }),
         getCharacters: builder.query({
             query: (page = 1) => `character?page=${page}`,

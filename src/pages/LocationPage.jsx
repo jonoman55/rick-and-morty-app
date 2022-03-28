@@ -7,8 +7,6 @@ import { LocationDetails } from '../components/locations';
 import { useGetLocationByIdQuery } from '../services/rickAndMortyApi';
 import { getLocationImg } from '../helpers/urls';
 
-// TODO : Finish implementing this page
-// TODO : Incorporate pictures from: https://rickandmorty.fandom.com/wiki/Category:Locations
 const LocationPage = () => {
     const navigate = useNavigate();
     const { id } = useParams();

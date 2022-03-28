@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { Box, Stack, Container, Card, Typography } from '@mui/material';
 
 import { Button } from '../components/controls';
+
 import rickAvatar from '../images/rick-avatar.png';
 import noobNoob from '../images/noob-noob.png';
 
