@@ -13,10 +13,24 @@ import {
     BugReport as Mythological,
     FlutterDash as Poopybutthole,
     Pets as Animal,
-    Coronavirus as Disease
+    Coronavirus as Disease,
+    Tv as TV,
+    SportsEsports as VideoGame,
+    Microwave as Microverse,
+    MapsHomeWork as Town,
+    NightsStay as Dream,
+    CollectionsBookmark as Menagerie,
+    BeachAccess as Resort,
+    AutoStories as Diegesis,
+    Public as NonDiegetic,
+    Info as Dimension,
+    Workspaces as Cluster,
+    RocketLaunch as Space
 } from '@mui/icons-material';
 import { FaSkullCrossbones as Dead, FaSmile as Alive } from 'react-icons/fa';
 import { RiGenderlessLine as Genderless } from 'react-icons/ri';
+import { BiPlanet as Planet } from 'react-icons/bi';
+import { GiDefenseSatellite as SpaceStation, GiAsteroid as Asteroid } from 'react-icons/gi';
 
 export const SpeciesIcon = ({ species, ...other }) => {
     switch (species) {
@@ -86,34 +100,51 @@ export const ResidentsIcon = ({ count, ...other }) => {
     return <NoResidents {...other} />;
 };
 
-// TODO : Finish implementing this Icon
-export const TypeIcon = ({ type }) => {
+export const TypeIcon = ({ type, ...other }) => {
     switch (type) {
         case 'Planet' || type.includes('Planet'):
-            return;
+            return <Planet {...other} />;
         case 'Space station':
-            return;
+            return <SpaceStation {...other} />;
         case 'Game':
-            return;
+            return <VideoGame {...other} />;
         case 'Microverse':
-            return;
+            return <Microverse {...other} />;
         case 'Menagerie':
-            return;
+            return <Menagerie {...other} />;
         case 'Fantasy town':
-            return;
+            return <Town {...other} />;
         case 'Dream':
-            return;
+            return <Dream {...other} />;
         case 'Asteroid':
-            return;
+            return <Asteroid {...other} />;
         case 'TV':
-            return;
+            return <TV {...other} />;
         case 'Resort':
-            return;
+            return <Resort {...other} />;
         case 'Non-Diegetic Alternative Reality':
-            return;
+            return <NonDiegetic {...other} />;
         case 'Diegesis':
-            return;
+            return <Diegesis {...other} />;
+        case 'Space':
+            return <Space {...other} />;
+        case 'Cluster':
+            return <Cluster {...other} />;
+        case 'unknown':
+            return <Unknown {...other} />;
         default:
-            return;
+            return <Unknown {...other} />;
+    }
+};
+
+// TODO : Finish implementing this Icon
+export const DimensionIcon = ({ dimension, ...other }) => {
+    switch (dimension) {
+        case 'Dimension':
+            return <Dimension {...other} />;
+        case 'unknown':
+            return <Unknown {...other} />;
+        default:
+            return <Unknown {...other} />;
     }
 };

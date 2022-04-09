@@ -49,6 +49,8 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     },
 }));
 
-export const ThemeSwitch = ({ checked, onChange }) => (
+const ThemeSwitch = ({ checked, onChange }) => (
     <MaterialUISwitch checked={checked} onChange={onChange} sx={{ m: 1 }} />
 );
+
+export default ThemeSwitch;

@@ -5,7 +5,7 @@ import { Close as CloseIcon } from "@mui/icons-material";
 import { Button, ToolTip } from "../components/controls";
 import { useBreakpoints } from "../hooks/useBreakpoints";
 
-import portal from "../images/portal.gif";
+import { portal } from "../images/";
 
 const height = (matches) => {
     if (matches) {

@@ -3,10 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Box, Container, Card, CardContent, Grid, Paper, Typography } from '@mui/material';
 
-import { Spinner } from '../components/design/Spinner';
-import SearchBar from '../components/design/SearchBar';
-import { UnderConstruction } from '../components/design/UnderConstruction';
-import { setCharacters, setFilter, setSearchResults } from '../reducers/appSlice'; 
+import { UnderConstruction, SearchBar, Spinner } from '../components/design';
+import { appActions} from '../reducers/appSlice'; 
 import { useGetAllCharactersQuery, useGetCharactersQuery } from '../services/rickAndMortyApi';
 import { usePathname } from '../hooks/usePathname';
 import { createIdsList } from '../utils';
@@ -18,9 +16,11 @@ import { createIdsList } from '../utils';
 // NOTE : Add origin to the name for better filtering for characters Autocomplete
 // TODO : Convert to styled components and move to cards folder
 const SearchPage = () => {
+    const dispatch = useDispatch();
     const pathname = usePathname();
     const [preview, setPreview] = useState(false);
     const [characterIds, setCharacterIds] = useState('');
+    
     const { data: results, isFetching } = useGetCharactersQuery(1);
 
     useEffect(() => {
@@ -30,7 +30,6 @@ const SearchPage = () => {
         // eslint-disable-next-line
     }, [isFetching]);
 
-    const dispatch = useDispatch();
     const { characters, filter, searchResults } = useSelector((state) => state.app);
 
     const ids = createIdsList(characterIds).slice(2);
@@ -42,29 +41,29 @@ const SearchPage = () => {
 
     useEffect(() => {
         if (!isLoading && characters) {
-            dispatch(setCharacters(data));
+            dispatch(appActions.setCharacters(data));
         }
         // eslint-disable-next-line
     }, [isLoading, characters]);
 
     useEffect(() => {
         if (characters) {
-            dispatch(setCharacters([]));
+            dispatch(appActions.setCharacters([]));
         }
         // eslint-disable-next-line
     }, [pathname]);
 
     const handleSearch = ({ target: { value } }) => {
-        dispatch(setFilter(value));
-        dispatch(setSearchResults(characters?.filter(({ name }) =>
+        dispatch(appActions.setFilter(value));
+        dispatch(appActions.setSearchResults(characters?.filter(({ name }) =>
             name?.toLowerCase().includes(filter.toLowerCase())
         )));
     };
 
     const clearSearch = () => {
-        dispatch(setFilter(''));
-        dispatch(setSearchResults([]));
-        dispatch(setCharacters([]));
+        dispatch(appActions.setFilter(''));
+        dispatch(appActions.setSearchResults([]));
+        dispatch(appActions.setCharacters([]));
     };
 
     return isLoading ? <Spinner /> : (

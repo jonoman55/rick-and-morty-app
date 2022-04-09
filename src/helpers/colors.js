@@ -52,3 +52,53 @@ export const speciesColor = (species) => {
             return 'primary.contrastText';
     }
 };
+
+// TODO : Finish implementing this color helper
+export const typeColor = (type) => {
+    switch (type) {
+        case 'Planet' || type.includes('Planet'):
+            return 'custom.green';
+        case 'Space station':
+            return 'custom.thumbBlue';
+        case 'Game':
+            return 'custom.robot2';
+        case 'Microverse':
+            return 'custom.robot';
+        case 'Menagerie':
+            return 'custom.pbh';
+        case 'Fantasy town':
+            return 'custom.myth';
+        case 'Dream':
+            return 'custom.white';
+        case 'Asteroid':
+            return 'custom.disease';
+        case 'TV':
+            return 'custom.orange';
+        case 'Resort':
+            return 'custom.cron';
+        case 'Non-Diegetic Alternative Reality':
+            return 'custom.notFound';
+        case 'Diegesis':
+            return 'custom.seen';
+        case 'Cluster':
+            return 'custom.yellow';
+        case 'Space':
+            return 'custom.orange';
+        case 'unknown':
+            return 'custom.unknown';
+        default:
+            return 'primary.contrastText';
+    }
+};
+
+// TODO : Finish implementing this color helper
+export const dimensionColor = ({ dimension, ...other }) => {
+    switch (dimension) {
+        case 'Dimension' || dimension.includes('Dimension'):
+            return 'custom.unknown';
+        case 'unknown':
+            return 'custom.unknown';
+        default:
+            return 'custom.unknown';
+    }
+};

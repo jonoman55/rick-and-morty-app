@@ -3,20 +3,19 @@ import { NavLink } from 'react-router-dom';
 import { Box } from '@mui/material';
 
 import { ToolTip } from '../controls';
+import { ThemeSwitch } from '../design';
 import { AppHeader, AnchorDiv, PortalDiv, LogoDiv, ThumbDiv, imageStyles } from '../styled/Header.styled';
-import { ThemeSwitch } from '../design/ThemeSwitch';
 import { toggleTheme } from '../../reducers/themeSlice';
 import { useBreakpoints } from '../../hooks/useBreakpoints';
 import { usePathname } from '../../hooks/usePathname';
 
-import logo from '../../images/logo.png';
-import portal from '../../images/portal.gif';
+import { logo, portal } from '../../images';
 
 const Header = () => {
+    const dispatch = useDispatch();
     const pathname = usePathname();
     const matches = useBreakpoints('sm', 'down');
     const theme = useSelector((state) => state.theme);
-    const dispatch = useDispatch();
     return (
         <AppHeader elevation={2} position='static' sx={{ borderBottomStyle: 'none' }}>
             <AnchorDiv component='div' id='back-to-top-anchor' disableGutters={matches}>

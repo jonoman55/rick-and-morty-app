@@ -3,7 +3,7 @@ import { Construction as ConstructionIcon } from '@mui/icons-material';
 
 import { Button } from '../controls';
 
-export const UnderConstruction = ({ preview, onClick }) => (
+const UnderConstruction = ({ preview, onClick }) => (
     <Box sx={{ my: 4 }}>
         <Container maxWidth='sm'>
             <Card elevation={2} sx={{ p: 2, display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center' }}>
@@ -24,3 +24,5 @@ export const UnderConstruction = ({ preview, onClick }) => (
         </Container>
     </Box>
 );
+
+export default UnderConstruction;

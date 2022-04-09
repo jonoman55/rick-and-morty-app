@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import { styled, useTheme, useMediaQuery, Box } from '@mui/material';
-import backgroundImage from '../../images/site-background.png';
+
+import { backgroundImage } from '../../images';
 
 // TODO : Implement a better container once all pages are complete
 // export const Container = styled(Box)(({ theme }) => ({

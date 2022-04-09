@@ -1,7 +1,8 @@
 import { Box, Container, Toolbar, Icon, Link } from '@mui/material';
-import { AppHeader } from '../styled/Header.styled';
+
 import { XSFlexText } from '../controls';
-import { RnMSvgIcon } from '../../images/RickAndMortyIcon';
+import { RnMSvgIcon } from '../../images';
+import { AppHeader } from '../styled/Header.styled';
 
 const ApiCredit = () => (
     <AppHeader component='div' position='static' elevation={2} sx={{

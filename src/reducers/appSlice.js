@@ -6,6 +6,7 @@ const initialState = {
     characters: [],
     episodes: [],
     locations: [],
+    hasLoaded: false,
     // search state
     filter: '',
     searchResults: [],
@@ -28,8 +29,11 @@ export const appSlice = createSlice({
         setCharacters: (state, action) => {
             state.characters = action.payload;
         },
+        setHasLoaded: (state, action) => {
+            state.hasLoaded = action.payload;
+        },
     },
 });
 
-export const { setPage, setFilter, setSearchResults, setCharacters } = appSlice.actions;
+export const appActions = appSlice.actions;
 export default appSlice.reducer;

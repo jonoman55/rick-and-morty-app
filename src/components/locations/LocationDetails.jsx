@@ -1,122 +1,180 @@
 import { Link } from 'react-router-dom';
-import { useCallback, useEffect, useState } from 'react';
-import { styled, Box, Stack, Typography, Card, CardMedia, CardContent, CardActions, Collapse, IconButton } from '@mui/material';
+import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Box, Stack, Typography, CardContent, Collapse, Icon } from '@mui/material';
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 
-import { Button } from '../controls';
-import { Spinner } from '../design/Spinner';
+import { Spinner, NavButtons } from '../design';
+import { Card, Paper, CardActions, Image, TextLink, ExpandMore, Section, TextBox, IconBox } from '../styled/LocationDetails.styled';
 import { useGetAllCharactersQuery } from '../../services/rickAndMortyApi';
-import { ResidentsIcon } from '../../helpers/icons';
+import { DimensionIcon, ResidentsIcon, TypeIcon } from '../../helpers/icons';
+import { FlexText } from '../controls';
+import { dimensionColor, typeColor } from '../../helpers/colors';
 
-const ExpandMore = styled((props) => {
-    const { expand, ...other } = props;
-    return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-    }),
-}));
-
-
-// TODO : Convert to styled components
-// TODO : Finish styling the Type and Dimension info
+// TODO : Finish styling the icons and colors
 const LocationDetails = ({ location, image, navigate }) => {
     const [expanded, setExpanded] = useState(false);
     const [residents, setResidents] = useState([]);
 
-    const handleExpandClick = () => setExpanded(!expanded);
-
     const ids = location?.residents?.map(url => url.split('/')[5]);
 
-    const { data, isLoading, isFetching } = useGetAllCharactersQuery(ids !== [] ? ids : undefined); 
+    const { data, isLoading, isFetching } = useGetAllCharactersQuery(
+        ids !== [] ? ids : undefined
+    );
 
-    const fetchResidents = useCallback(() => { 
+    const fetchResidents = useCallback(() => {
         if (!isLoading && !isFetching) {
             if (!data?.info) setResidents(data);
         }
     }, [isLoading, isFetching, data]);
 
-    useEffect(() => { 
+    useEffect(() => {
         fetchResidents();
     }, [fetchResidents]);
 
     return isLoading ? <Spinner /> : (
-        <Card elevation={2} sx={{ p: 2, display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center', alignItems: 'center' }}>
-            <Typography component='h4' variant='h5' paragraph gutterBottom sx={{ color: 'custom.main', textAlign: 'center', mt: 2 }}>
-                {location?.name}
-            </Typography>
-            <Box sx={{ p: 1 }}>
-                <CardMedia
-                    component='img'
-                    height='100%'
-                    width='100%'
-                    src={`${image}`}
-                    alt=''
-                    sx={{
-                        p: 0, border: `1px solid black`,
-                        borderRadius: (theme) => theme.shape.borderRadius,
-                    }}
+        <Card elevation={2}>
+            <Title
+                name={location?.name}
+            />
+            <ImageBox
+                image={image}
+            />
+            <CardContent component={Paper} elevation={1}>
+                <DetailsTitle
+                    title={'Location Details'}
                 />
-            </Box>
-            <CardContent>
-                <Typography component='h5' variant='body1' sx={{ color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
-                    Type: {location?.type}
-                </Typography>
-                {location?.dimension && (
-                    <Typography component='p' variant='body1' sx={{ color: 'primary.contrastText', textAlign: 'center' }} gutterBottom>
-                        Dimension: {location?.dimension}
-                    </Typography>
-                )}
+                <Details
+                    location={location}
+                />
             </CardContent>
-            <CardActions sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center' }}>
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                    <ResidentsIcon count={location?.residents?.length} sx={{ color: 'custom.main', height: 16, width: 16 }} />
-                    <Typography variant='caption' fontSize={14}>
-                        &nbsp;{location?.residents?.length ? location?.residents?.length : "No"} Residents
-                    </Typography>
-                </Box>
+            <CardActions>
+                <ResidentsBox
+                    location={location}
+                />
                 {!data?.info && (
-                    <ExpandMore
+                    <ExpandMoreButton
                         expand={expanded}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                    >
-                        <ExpandMoreIcon />
-                    </ExpandMore>
+                        onClick={() => setExpanded(!expanded)}
+                    />
                 )}
             </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <Collapse in={expanded} timeout='auto' unmountOnExit>
                 <CardContent>
-                    <Stack direction='column' spacing={1} sx={{ textAlign: 'center', display: 'flex', alignItems: 'center' }}>
-                        {residents?.length > 1 ? residents?.map((resident, idx) => (
-                            <Box key={idx}>
-                                <Typography component={Link} to={`/characters/${resident.id}`} variant='subtitle2' sx={{
-                                    color: 'primary.contrastText', textDecoration: 'none', '&:hover': { color: 'custom.main' }
-                                }}>
-                                    {resident.name}
-                                </Typography>
-                            </Box>
-                        )) : (
-                            <Typography component={Link} to={`/characters/${residents.id}`} variant='subtitle2' sx={{
-                                color: 'primary.contrastText', textDecoration: 'none', '&:hover': { color: 'custom.main' }
-                            }}>
-                                {residents.name}
-                            </Typography>
-                        )}
-                    </Stack>
+                    <ResidentsList
+                        residents={residents}
+                    />
                 </CardContent>
             </Collapse>
-            <CardActions>
-                <Stack direction='row' spacing={2} justifyContent='center' sx={{ mt: 4, mb: 2 }}>
-                    <Button variant='contained' onClick={() => navigate('/')}>Home</Button>
-                    <Button variant='contained' onClick={() => navigate(-1)}>Back</Button>
-                </Stack>
+            <CardActions sx={{ justifyContent: 'center' }}>
+                <NavButtons
+                    navigate={navigate}
+                    sx={{ mt: 4, mb: 2 }}
+                />
             </CardActions>
         </Card>
     );
 };
+
+const Detail = ({ color, type, text, isDimension }) => (
+    <Section>
+        <IconBox>
+            <Icon sx={{ color: color }}>
+                {isDimension ? <DimensionIcon dimension={type} /> : <TypeIcon type={type} />}
+            </Icon>
+        </IconBox>
+        <TextBox>
+            <Typography component='p' variant='body1' sx={{ mt: 1, color: 'primary.contrastText' }} gutterBottom>
+                {text}
+            </Typography>
+            <Typography component='p' variant='body1' sx={{ ml: 1, mt: 1, color: color, fontWeight: 'bold' }} gutterBottom>
+                {type}
+            </Typography>
+        </TextBox>
+    </Section>
+);
+
+const Title = ({ name }) => (
+    <Typography component='h4' variant='h5' paragraph sx={{ color: 'custom.main', textAlign: 'center', mt: 2 }} gutterBottom>
+        {name}
+    </Typography>
+);
+
+const ImageBox = ({ image }) => (
+    <Box sx={{ p: 1 }}>
+        <Image
+            component='img'
+            src={image}
+            height='100%'
+            width='100%'
+            alt=''
+        />
+    </Box>
+);
+
+const DetailsTitle = ({ title }) => (
+    <FlexText sx={{
+        p: 1.5, m: 1, color: 'primary.contrastText', bgcolor: 'custom.main',
+        alignSelf: 'center', cursor: 'default', fontWeight: 'bold', borderRadius: '1.5rem'
+    }}>
+        {title}
+    </FlexText>
+);
+
+const Details = ({ location }) => (
+    <Fragment>
+        <Detail
+            text={'Type:'}
+            type={location?.type}
+            color={typeColor(location?.type)}
+            isDimension={false}
+        />
+        {location?.dimension && (
+            <Fragment>
+                <Detail
+                    color={dimensionColor(location?.dimension)}
+                    text={'Dimension:'}
+                    type={location?.dimension}
+                    isDimension={true}
+                />
+            </Fragment>
+        )}
+    </Fragment>
+);
+
+const ExpandMoreButton = ({ expanded, onClick }) => (
+    <ExpandMore
+        expand={expanded}
+        onClick={onClick}
+        aria-expanded={expanded}
+        aria-label="show more"
+    >
+        <ExpandMoreIcon />
+    </ExpandMore>
+);
+
+const ResidentsBox = ({ location }) => (
+    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+        <ResidentsIcon count={location?.residents?.length} sx={{ color: 'custom.main', height: 16, width: 16 }} />
+        <Typography variant='caption' fontSize={14}>
+            &nbsp;{location?.residents?.length ? location?.residents?.length : "No"} Residents
+        </Typography>
+    </Box>
+);
+
+const ResidentsList = ({ residents }) => (
+    <Stack direction='column' spacing={1} sx={{ textAlign: 'center', display: 'flex', alignItems: 'center' }}>
+        {residents?.length > 1 ? residents?.map((resident, idx) => (
+            <Box key={idx}>
+                <TextLink component={Link} to={`/characters/${resident.id}`} variant='subtitle2'>
+                    {resident.name}
+                </TextLink>
+            </Box>
+        )) : (
+            <TextLink component={Link} to={`/characters/${residents.id}`} variant='subtitle2'>
+                {residents.name}
+            </TextLink>
+        )}
+    </Stack>
+);
 
 export default LocationDetails;

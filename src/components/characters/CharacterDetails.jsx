@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import { Box, Stack, Typography, CardContent, CardActions, Icon } from '@mui/material';
+import { Box, Typography, CardContent, CardActions, Icon } from '@mui/material';
 import { Visibility } from '@mui/icons-material';
 
+import { FlexText } from '../controls';
+import { NavButtons } from '../design';
 import { Card, Name, Paper, OriginLink, StyledText, LocationLink, Image, Section, IconBox, TextBox } from '../styled/CharacterDetails.styled';
-import { Button, FlexText } from '../controls';
 import { StatusIcon, GenderIcon, SpeciesIcon } from '../../helpers/icons';
 import { genderColor, speciesColor, statusColor } from '../../helpers/colors';
 import { createLink } from '../../helpers/urls';
@@ -20,7 +21,9 @@ const CharacterDetails = ({ character, navigate }) => (
             image={character?.image}
         />
         <CardContent component={Paper} elevation={1}>
-            <DetailsTitle />
+            <DetailsTitle
+                title={'Character Details'}
+            />
             <Detail
                 color={genderColor(character?.gender)}
                 type={character?.gender}
@@ -44,7 +47,10 @@ const CharacterDetails = ({ character, navigate }) => (
             )}
         </CardContent>
         <CardActions>
-            <NavButtons navigate={navigate} />
+            <NavButtons
+                navigate={navigate}
+                sx={{ mt: 4 }}
+            />
         </CardActions>
     </Card>
 );
@@ -115,12 +121,12 @@ const Detail = ({ color, type, text, iconType }) => (
     </Section>
 );
 
-const DetailsTitle = () => (
+const DetailsTitle = ({ title }) => (
     <FlexText sx={{
         p: 1.5, m: 1, color: 'primary.contrastText', bgcolor: 'custom.main',
         alignSelf: 'center', cursor: 'default', fontWeight: 'bold', borderRadius: '1.5rem'
     }}>
-        Character Details
+        {title}
     </FlexText>
 );
 
@@ -136,13 +142,6 @@ const LastSeen = ({ character }) => (
             <Location character={character} />
         </TextBox>
     </Section>
-);
-
-const NavButtons = ({ navigate }) => (
-    <Stack direction='row' spacing={2} justifyContent='center' sx={{ mt: 4 }}>
-        <Button variant='contained' onClick={() => navigate('/')}>Home</Button>
-        <Button variant='contained' onClick={() => navigate(-1)}>Back</Button>
-    </Stack>
 );
 
 export default CharacterDetails;

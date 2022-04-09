@@ -1,7 +1,9 @@
 import { SpinnerBox, SpinnerProgress } from '../styled/Spinner.styled';
 
-export const Spinner = () => (
+const Spinner = () => (
     <SpinnerBox>
         <SpinnerProgress />
     </SpinnerBox>
 );
+
+export default Spinner;
