@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Fragment, useCallback, useEffect, useState, useMemo } from 'react';
 import { Box, Stack, Typography, CardContent, Collapse, Icon } from '@mui/material';
-import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 
-import { Spinner, NavButtons } from '../design';
-import { Card, Paper, CardActions, Image, TextLink, ExpandMore, Section, TextBox, IconBox } from '../styled/LocationDetails.styled';
+import { Spinner, NavButtons, ExpandMoreButton } from '../design';
+import { FlexText } from '../controls';
+import { Card, Paper, CardActions, Image, TextLink, Section, TextBox, IconBox } from '../styled/LocationDetails.styled';
 import { useGetAllCharactersQuery } from '../../services/rickAndMortyApi';
 import { DimensionIcon, ResidentsIcon, TypeIcon } from '../../helpers/icons';
-import { FlexText } from '../controls';
 import { dimensionColor, typeColor } from '../../helpers/colors';
 
 // TODO : Finish styling the icons and colors
@@ -15,7 +14,9 @@ const LocationDetails = ({ location, image, navigate }) => {
     const [expanded, setExpanded] = useState(false);
     const [residents, setResidents] = useState([]);
 
-    const ids = location?.residents?.map(url => url.split('/')[5]);
+    const ids = useMemo(() => {
+        return location?.residents?.map((url) => url.split('/')[5]);
+    }, [location]);
 
     const { data, isLoading, isFetching } = useGetAllCharactersQuery(
         ids !== [] ? ids : undefined
@@ -141,22 +142,11 @@ const Details = ({ location }) => (
     </Fragment>
 );
 
-const ExpandMoreButton = ({ expanded, onClick }) => (
-    <ExpandMore
-        expand={expanded}
-        onClick={onClick}
-        aria-expanded={expanded}
-        aria-label="show more"
-    >
-        <ExpandMoreIcon />
-    </ExpandMore>
-);
-
 const ResidentsBox = ({ location }) => (
     <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
         <ResidentsIcon count={location?.residents?.length} sx={{ color: 'custom.main', height: 16, width: 16 }} />
         <Typography variant='caption' fontSize={14}>
-            &nbsp;{location?.residents?.length ? location?.residents?.length : "No"} Residents
+            &nbsp;{location?.residents?.length ? location?.residents?.length : "No"}&nbsp;Residents
         </Typography>
     </Box>
 );
