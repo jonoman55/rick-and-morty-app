@@ -1,7 +1,10 @@
 import { createRef, useCallback } from 'react';
 import { useTheme, Slide, IconButton } from '@mui/material';
-import { Close as CloseIcon } from '@mui/icons-material';
 import { SnackbarProvider as NotistackProvider } from 'notistack';
+import { Close as CloseIcon } from '@mui/icons-material';
+
+// TODO : Finish implementing the custom SnackMessage
+// import { SnackMessage } from './SnackMessage';
 
 const styles = (theme) => {
     return {
@@ -13,7 +16,12 @@ const styles = (theme) => {
         justifyContent: 'space-between',
         alignItems: 'center',
         textAlign: 'center',
+        '& .SnackbarContent-root': {
+            display: 'flex',
+            justifyContent: 'center',
+        },
         '& .SnackbarItem-variantSuccess': {
+            // minWidth: '150px',
             color: theme.palette.common.black,
             backgroundColor:  theme.palette.custom.main,
         },
@@ -28,12 +36,13 @@ const styles = (theme) => {
         },
         '& .SnackbarItem-action': {
             paddingLeft: 0,
-            marginLeft: '4px',
+            marginLeft: '6px',
             marginRight: 0
         }
     };
 };
 
+// eslint-disable-next-line no-unused-vars
 const DismissIcon = ({ onClick }) => (
     <IconButton size='small' onClick={onClick}>
         <CloseIcon
@@ -58,6 +67,7 @@ export const SnackbarProvider = ({ children }) => {
             preventDuplicate
             autoHideDuration={3000}
             TransitionComponent={Slide}
+            hideIconVariant={true}
             anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'center',
@@ -65,6 +75,9 @@ export const SnackbarProvider = ({ children }) => {
             action={(key) => (
                 <DismissIcon onClick={onClickDismiss(key)} />
             )}
+            // content={(key, message) => (
+            //     <SnackMessage id={key} message={message} />
+            // )}
             sx={{ ...styles(theme) }}
         >
             {children}

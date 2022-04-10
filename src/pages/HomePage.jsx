@@ -7,7 +7,6 @@ import { appActions } from '../reducers/appSlice';
 import { useNotifier } from '../hooks/useNotifier';
 
 // TODO : Hook up the hasLoaded prop to localStorage
-// TODO : Figure out how to replace the success alert icon with a custom one
 const HomePage = () => {
     const notify = useNotifier();
     const dispatch = useDispatch();
@@ -20,6 +19,7 @@ const HomePage = () => {
 
     useEffect(() => {
         if (!hasLoaded) {
+            // notify('Welcome!', 'success');
             notify('Welcome to The Rick and Morty Portal!', 'success');
         }
     }, [hasLoaded, notify]);
