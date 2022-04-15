@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { getItem } from '../hooks/useStorage';
 
-const theme = Boolean(getItem('theme'));
+const theme = getItem('theme');
 
 const initialState = {
-    darkTheme: theme ? theme : false
+    darkTheme: Boolean(theme) ? theme : true
 };
 
 export const themeSlice = createSlice({
