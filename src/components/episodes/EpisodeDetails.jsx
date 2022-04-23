@@ -1,5 +1,5 @@
-import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { Box, Typography, CardContent, Icon, Stack, Collapse } from '@mui/material';
 
 import { FlexText } from '../controls';
@@ -8,6 +8,7 @@ import { Card, Paper, CardActions, TextLink, Section, TextBox, IconBox, Image } 
 import { ResidentsIcon } from '../../helpers/icons';
 import { useGetAllCharactersQuery } from '../../services/rickAndMortyApi';
 
+// TODO : Incorporate pictures from: https://rickandmorty.fandom.com/wiki/Category:Episodes
 const EpisodeDetails = ({ episode, navigate }) => {
     const [expanded, setExpanded] = useState(false);
     const [characters, setCharacters] = useState([]);
@@ -107,7 +108,7 @@ const ImageBox = ({ image }) => (
             src={image}
             height='100%'
             width='100%'
-            alt=''
+            alt='episodeImg'
         />
     </Box>
 );

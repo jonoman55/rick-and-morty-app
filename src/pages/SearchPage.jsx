@@ -14,7 +14,7 @@ import { createIdsList } from '../utils';
 // NOTE : Be careful with this page - it is possible to hit API limit if pics are included (HTTP Status - 429)
 // TODO : Try re-implementing the Autocomplete
 // NOTE : Add origin to the name for better filtering for characters Autocomplete
-// TODO : Convert to styled components and move to cards folder
+// TODO : Convert to styled components 
 const SearchPage = () => {
     const dispatch = useDispatch();
     const pathname = usePathname();

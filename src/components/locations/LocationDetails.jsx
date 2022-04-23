@@ -2,14 +2,13 @@ import { Link } from 'react-router-dom';
 import { Fragment, useCallback, useEffect, useState, useMemo } from 'react';
 import { Box, Stack, Typography, CardContent, Collapse, Icon } from '@mui/material';
 
-import { Spinner, NavButtons, ExpandMoreButton } from '../design';
 import { FlexText } from '../controls';
+import { Spinner, NavButtons, ExpandMoreButton } from '../design';
 import { Card, Paper, CardActions, Image, TextLink, Section, TextBox, IconBox } from '../styled/LocationDetails.styled';
-import { useGetAllCharactersQuery } from '../../services/rickAndMortyApi';
 import { DimensionIcon, ResidentsIcon, TypeIcon } from '../../helpers/icons';
+import { useGetAllCharactersQuery } from '../../services/rickAndMortyApi';
 import { dimensionColor, typeColor } from '../../helpers/colors';
 
-// TODO : Finish styling the icons and colors
 const LocationDetails = ({ location, image, navigate }) => {
     const [expanded, setExpanded] = useState(false);
     const [residents, setResidents] = useState([]);
@@ -107,7 +106,7 @@ const ImageBox = ({ image }) => (
             src={image}
             height='100%'
             width='100%'
-            alt=''
+            alt='locationImg'
         />
     </Box>
 );
