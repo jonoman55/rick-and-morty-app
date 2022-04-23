@@ -25,7 +25,8 @@ import {
     Public as NonDiegetic,
     Info as Dimension,
     Workspaces as Cluster,
-    RocketLaunch as Space
+    RocketLaunch as Space,
+    HotTub as Spa
 } from '@mui/icons-material';
 import { FaSkullCrossbones as Dead, FaSmile as Alive } from 'react-icons/fa';
 import { RiGenderlessLine as Genderless } from 'react-icons/ri';
@@ -88,13 +89,16 @@ export const StatusIcon = ({ status, ...other }) => {
 };
 
 export const ResidentsIcon = ({ count, ...other }) => {
+    if (count === 0) {
+        return <NoResidents {...other} />;
+    }
     if (count === 1) {
         return <OneResident {...other} />;
     }
     if (count > 1 && count <= 10) {
         return <Residents {...other} />;
     }
-    if (count > 11) {
+    if (count >= 11) {
         return <MultipleResidents {...other} />;
     }
     return <NoResidents {...other} />;
@@ -102,7 +106,7 @@ export const ResidentsIcon = ({ count, ...other }) => {
 
 export const TypeIcon = ({ type, ...other }) => {
     switch (type) {
-        case 'Planet' || type.includes('Planet'):
+        case 'Planet' || type?.includes('Planet'):
             return <Planet {...other} />;
         case 'Space station':
             return <SpaceStation {...other} />;
@@ -120,6 +124,8 @@ export const TypeIcon = ({ type, ...other }) => {
             return <Asteroid {...other} />;
         case 'TV':
             return <TV {...other} />;
+        case 'Spa':
+            return <Spa {...other} />
         case 'Resort':
             return <Resort {...other} />;
         case 'Non-Diegetic Alternative Reality':
@@ -133,11 +139,10 @@ export const TypeIcon = ({ type, ...other }) => {
         case 'unknown':
             return <Unknown {...other} />;
         default:
-            return <Unknown {...other} />;
+            return <Planet {...other} />;
     }
 };
 
-// TODO : Finish implementing this Icon
 export const DimensionIcon = ({ dimension, ...other }) => {
     switch (dimension) {
         case 'Dimension':
@@ -145,6 +150,6 @@ export const DimensionIcon = ({ dimension, ...other }) => {
         case 'unknown':
             return <Unknown {...other} />;
         default:
-            return <Unknown {...other} />;
+            return <Dimension {...other} />;
     }
 };

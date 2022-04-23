@@ -6,7 +6,6 @@ import { HomeCard } from '../components/home';
 import { appActions } from '../reducers/appSlice';
 import { useNotifier } from '../hooks/useNotifier';
 
-// TODO : Hook up the hasLoaded prop to localStorage
 const HomePage = () => {
     const notify = useNotifier();
     const dispatch = useDispatch();
@@ -19,7 +18,6 @@ const HomePage = () => {
 
     useEffect(() => {
         if (!hasLoaded) {
-            // notify('Welcome!', 'success');
             notify('Welcome to The Rick and Morty Portal!', 'success');
         }
     }, [hasLoaded, notify]);

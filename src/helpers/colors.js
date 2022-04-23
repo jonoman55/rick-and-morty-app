@@ -53,7 +53,6 @@ export const speciesColor = (species) => {
     }
 };
 
-// TODO : Finish implementing this color helper
 export const typeColor = (type) => {
     switch (type) {
         case 'Planet' || type.includes('Planet'):
@@ -91,7 +90,6 @@ export const typeColor = (type) => {
     }
 };
 
-// TODO : Finish implementing this color helper
 export const dimensionColor = ({ dimension, ...other }) => {
     switch (dimension) {
         case 'Dimension' || dimension.includes('Dimension'):

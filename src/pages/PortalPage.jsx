@@ -1,11 +1,15 @@
-import { useState } from "react";
-import { Box, Card, CardContent, CardMedia, Container, Alert, IconButton } from "@mui/material";
-import { Close as CloseIcon } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Box, CardMedia, Container } from "@mui/material";
+import { styled, Card as MuiCard, CardContent as MuiCardContent } from "@mui/material";
 
 import { Button, ToolTip } from "../components/controls";
 import { useBreakpoints } from "../hooks/useBreakpoints";
 
-import { portal } from "../images/";
+import { portal } from "../images";
+import { useGetAllLocationsQuery } from "../services/rickAndMortyApi";
+import { Spinner } from "../components/design";
+import { getRandomNumberBetween } from "../utils";
 
 const height = (matches) => {
     if (matches) {
@@ -19,14 +23,44 @@ const height = (matches) => {
     }
 };
 
-// TODO : Finish implementing the warp logic
+const Card = styled(MuiCard)(({ theme }) => ({
+    padding: theme.spacing(4),
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
+}));
+
+const CardContent = styled(MuiCardContent)(({ theme }) => ({
+    marginTop: theme.spacing(2),
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    width: '100%'
+}));
+
 const PortalPage = () => {
+    const navigate = useNavigate();
     const matches = useBreakpoints('sm', 'up');
-    const [showAlert, setShowAlert] = useState(false);
-    return (
+
+    const [count, setCount] = useState(0);
+
+    const { data, isLoading } = useGetAllLocationsQuery();
+
+    useEffect(() => {
+        if (!isLoading) setCount(data?.info?.count);
+    }, [data, isLoading]);
+
+    const handleWarpClick = () => {
+        const randomLocation = getRandomNumberBetween(1, count);
+        navigate(`/locations/${randomLocation}`);
+    };
+
+    return isLoading ? <Spinner /> : (
         <Box sx={{ my: 4 }}>
             <Container maxWidth="md">
-                <Card sx={{ p: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <Card>
                     <Box sx={{ p: 2 }}>
                         <CardMedia
                             component='img'
@@ -35,31 +69,12 @@ const PortalPage = () => {
                             sx={height(matches)}
                         />
                     </Box>
-                    <CardContent sx={{ mt: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', width: '100%' }}>
+                    <CardContent>
                         <ToolTip title='Warp To A Random Location!' placement='bottom' component={
-                            <Button sx={{ width: 125 }} onClick={() => setShowAlert(true)}>
+                            <Button sx={{ width: 125 }} onClick={handleWarpClick}>
                                 Warp!
                             </Button>}
                         />
-                        {showAlert && (
-                            <Alert
-                                icon={false}
-                                severity='success'
-                                action={
-                                    <IconButton
-                                        aria-label='close'
-                                        color='inherit'
-                                        size='small'
-                                        onClick={() => setShowAlert(false)}
-                                    >
-                                        <CloseIcon fontSize='inherit' />
-                                    </IconButton>
-                                }
-                                sx={{ my: 2 }}
-                            >
-                                This feature is not out yet! 😅
-                            </Alert>
-                        )}
                     </CardContent>
                 </Card>
             </Container>

@@ -39,7 +39,7 @@ const LocationsGrid = () => {
         <Paper elevation={2}>
             <Grid container spacing={2}> 
                 <ReusableGrid
-                    xs={12} sm={12} md={6} lg={3} xl={3}
+                    xs={12} sm={6} md={6} lg={3} xl={3}
                     type='locations'
                     items={data?.results}
                 />

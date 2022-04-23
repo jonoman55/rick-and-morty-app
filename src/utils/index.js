@@ -7,3 +7,6 @@ export const createIdsList = count => {
     array = array.join(',');
     return array.toString();
 };
+
+export const getRandomNumberBetween = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1) + min);

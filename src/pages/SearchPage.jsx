@@ -70,6 +70,8 @@ const SearchPage = () => {
         <Box sx={{ my: 4 }}>
             <Container maxWidth='md'>
                 <UnderConstruction
+                    title='Search'
+                    withPreview={true}
                     preview={preview}
                     onClick={() => setPreview(!preview)}
                 />
