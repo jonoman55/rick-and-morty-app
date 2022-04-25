@@ -24,12 +24,14 @@ export const FooterIcons = () => (
             title='Visit My GitHub Page'
             placement='top'
             href='https://github.com/jonoman55'
-            icon={<GitHubIcon fontSize='large' />} />
+            icon={<GitHubIcon fontSize='large' />}
+        />
         <ImageLink
             title='The Rick And Morty API'
             placement='top'
             href='https://rickandmortyapi.com/'
-            icon={<Icon component={RnMSvgIcon} fontSize='large' />} />
+            icon={<Icon component={RnMSvgIcon} fontSize='large' />}
+        />
     </Stack>
 );
 

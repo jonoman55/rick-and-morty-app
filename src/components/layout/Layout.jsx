@@ -5,6 +5,8 @@ import BackToTop from './BackToTop';
 import BottomNav from './BottomNav';
 import { Body, Container } from './Container';
 
+// TODO : Add the footer to homepage (styling changes needed)
+// NOTE : Add borderBottom to BottomNav and remove borderTop from Footer
 const Layout = (props) => (
     <Body>
         <Header />

@@ -11,7 +11,7 @@ export const Card = styled(MuiCard)(({ theme }) => ({
 
 export const Paper = styled(MuiPaper)(({ theme }) => ({
     padding: theme.spacing(1),
-    margin: theme.spacing(4, 4, 2, 4),
+    margin: theme.spacing(4, 4, 4, 4),
     width: '100%',
     height: '100%',
     display: 'flex',
@@ -72,4 +72,11 @@ export const IconBox = styled(Box)(({ theme }) => ({
     margin: theme.spacing(0, 1),
     display: 'flex',
     justifyContent: 'center',
+}));
+
+export const CardTitle = styled(Typography)(({ theme }) => ({
+    color: theme.palette.primary.contrastText,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    padding: theme.spacing(0.5)
 }));

@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { Box, Typography, CardContent, Icon, Stack, Collapse } from '@mui/material';
+import { CellTower as AirDateIcon, Tv as EpisodeIcon } from '@mui/icons-material';
 
 import { FlexText } from '../controls';
 import { ExpandMoreButton, NavButtons } from '../design';
-import { Card, Paper, CardActions, TextLink, Section, TextBox, IconBox, Image } from '../styled/EpisodeDetails.styled';
+import { Card, Paper, CardActions, CardTitle, TextLink, Section, TextBox, IconBox } from '../styled/EpisodeDetails.styled';
 import { ResidentsIcon } from '../../helpers/icons';
 import { useGetAllCharactersQuery } from '../../services/rickAndMortyApi';
 
-// TODO : Incorporate pictures from: https://rickandmorty.fandom.com/wiki/Category:Episodes
 const EpisodeDetails = ({ episode, navigate }) => {
     const [expanded, setExpanded] = useState(false);
     const [characters, setCharacters] = useState([]);
@@ -33,13 +33,9 @@ const EpisodeDetails = ({ episode, navigate }) => {
 
     return (
         <Card elevation={2}>
-            <Title
-                name={episode?.name}
-            />
-            {/* TODO : Find a good source or image for each episode or remove this component */}
-            {/* <ImageBox
-                image={''}
-            /> */}
+            <CardTitle component='h5' variant='h5'>
+                {episode?.name}
+            </CardTitle>
             <CardContent component={Paper} elevation={1}>
                 <DetailsTitle
                     title={'Episode Details'}
@@ -76,11 +72,15 @@ const EpisodeDetails = ({ episode, navigate }) => {
     );
 };
 
-const Detail = ({ color, subtext, text }) => (
+const Detail = ({ color, subtext, text, type }) => (
     <Section>
         <IconBox>
             <Icon sx={{ color: color }}>
-                {/* TODO : Create Icons and color helpers for Episode Number and First Aired */}
+                {type === 'AirDate' ? (
+                    <AirDateIcon sx={{ color: 'custom.blue' }} />
+                ) : (
+                    <EpisodeIcon sx={{ color: 'custom.orange' }} />
+                )}
             </Icon>
         </IconBox>
         <TextBox>
@@ -92,25 +92,6 @@ const Detail = ({ color, subtext, text }) => (
             </Typography>
         </TextBox>
     </Section>
-);
-
-const Title = ({ name }) => (
-    <Typography component='h4' variant='h5' paragraph sx={{ color: 'custom.main', textAlign: 'center', mt: 2 }} gutterBottom>
-        {name}
-    </Typography>
-);
-
-// eslint-disable-next-line no-unused-vars
-const ImageBox = ({ image }) => (
-    <Box sx={{ p: 1 }}>
-        <Image
-            component='img'
-            src={image}
-            height='100%'
-            width='100%'
-            alt='episodeImg'
-        />
-    </Box>
 );
 
 const DetailsTitle = ({ title }) => (
@@ -125,12 +106,14 @@ const DetailsTitle = ({ title }) => (
 const Details = ({ episode }) => (
     <Fragment>
         <Detail
-            text={'Episode Number:'}
+            text={'Episode Info:'}
             subtext={episode?.episode}
+            type={'EpisodeInfo'}
         />
         <Detail
             text={'First Aired:'}
             subtext={episode?.air_date}
+            type={'AirDate'}
         />
     </Fragment>
 );

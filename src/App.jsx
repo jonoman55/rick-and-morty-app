@@ -9,6 +9,7 @@ import { lightTheme, darkTheme } from './theme';
 
 const Routes = lazy(() => import('./routes'));
 
+// TODO : Consolidate Character, Location and Episode Details styled components into one file
 const App = () => {
     const theme = useSelector((state) => state.theme);
     const activeTheme = createTheme(theme.darkTheme ? darkTheme : lightTheme);

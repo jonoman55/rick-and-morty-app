@@ -82,11 +82,14 @@ export const Card = styled(MuiCard)(({ theme }) => ({
 export const Image = styled(CardMedia)(({ theme }) => ({
     marginTop: theme.spacing(2),
     padding: theme.spacing(0),
-    border: `1px solid ${theme.palette.custom.black}`,
-    borderRadius: theme.shape.borderRadius,
+    border: '1px solid transparent', //`1px solid ${theme.palette.custom.black}`,
+    borderRadius: theme.shape.borderRadius + 2,
+    '&:last-child': {
+        paddingBottom: theme.spacing(0),
+    }
 }));
 
-export const Name = styled(Typography)(({ theme }) => ({
+export const CardTitle = styled(Typography)(({ theme }) => ({
     color: theme.palette.primary.contrastText,
     textAlign: 'center',
     fontWeight: 'bold',

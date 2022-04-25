@@ -4,7 +4,7 @@ import { Box, Stack, Typography, CardContent, Collapse, Icon } from '@mui/materi
 
 import { FlexText } from '../controls';
 import { Spinner, NavButtons, ExpandMoreButton } from '../design';
-import { Card, Paper, CardActions, Image, TextLink, Section, TextBox, IconBox } from '../styled/LocationDetails.styled';
+import { Card, Paper, CardActions, CardTitle, Image, TextLink, Section, TextBox, IconBox } from '../styled/LocationDetails.styled';
 import { DimensionIcon, ResidentsIcon, TypeIcon } from '../../helpers/icons';
 import { useGetAllCharactersQuery } from '../../services/rickAndMortyApi';
 import { dimensionColor, typeColor } from '../../helpers/colors';
@@ -33,9 +33,9 @@ const LocationDetails = ({ location, image, navigate }) => {
 
     return isLoading ? <Spinner /> : (
         <Card elevation={2}>
-            <Title
-                name={location?.name}
-            />
+            <CardTitle component='h5' variant='h5'>
+                {location?.name}
+            </CardTitle>
             <ImageBox
                 image={image}
             />
@@ -91,12 +91,6 @@ const Detail = ({ color, type, text, isDimension }) => (
             </Typography>
         </TextBox>
     </Section>
-);
-
-const Title = ({ name }) => (
-    <Typography component='h4' variant='h5' paragraph sx={{ color: 'custom.main', textAlign: 'center', mt: 2 }} gutterBottom>
-        {name}
-    </Typography>
 );
 
 const ImageBox = ({ image }) => (

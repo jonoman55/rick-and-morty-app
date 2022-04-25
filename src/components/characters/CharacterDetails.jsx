@@ -4,16 +4,16 @@ import { Visibility } from '@mui/icons-material';
 
 import { FlexText } from '../controls';
 import { NavButtons } from '../design';
-import { Card, Name, Paper, OriginLink, StyledText, LocationLink, Image, Section, IconBox, TextBox } from '../styled/CharacterDetails.styled';
+import { Card, CardTitle, Paper, OriginLink, StyledText, LocationLink, Image, Section, IconBox, TextBox } from '../styled/CharacterDetails.styled';
 import { StatusIcon, GenderIcon, SpeciesIcon } from '../../helpers/icons';
 import { genderColor, speciesColor, statusColor } from '../../helpers/colors';
 import { createLink } from '../../helpers/urls';
 
 const CharacterDetails = ({ character, navigate }) => (
     <Card elevation={2}>
-        <Name component='h5' variant='h5'>
+        <CardTitle component='h5' variant='h5'>
             {character?.name}
-        </Name>
+        </CardTitle>
         {character?.origin?.name && (
             <Origin character={character} />
         )}
