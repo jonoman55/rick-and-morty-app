@@ -4,7 +4,7 @@ import { FooterPaper, FooterIcons, FooterText } from '../styled/Footer.styled';
 const Footer = () => {
     const pathname = usePathname();
     return pathname !== '/' && (
-        <FooterPaper elevation={2} component='footer'>
+        <FooterPaper component='footer' elevation={2}>
             <FooterIcons />
             <FooterText />
         </FooterPaper>

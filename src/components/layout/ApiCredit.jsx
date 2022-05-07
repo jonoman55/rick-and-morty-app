@@ -1,8 +1,23 @@
-import { Box, Container, Toolbar, Icon, Link } from '@mui/material';
+import { styled, Box, Container, Toolbar, Icon, Link } from '@mui/material';
 
 import { XSFlexText } from '../controls';
 import { RnMSvgIcon } from '../../images';
 import { AppHeader } from '../styled/Header.styled';
+
+const LinkBox = styled(Box)(({ theme }) => ({
+    paddingTop: theme.spacing(2),
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'nowrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textDecoration: 'none',
+    color: theme.palette.primary.contrastText,
+    width: 'auto',
+    '&:hover': {
+        color: theme.palette.custom.thumbBlue,
+    },
+}));
 
 const ApiCredit = () => (
     <AppHeader component='div' position='static' elevation={2} sx={{
@@ -11,18 +26,12 @@ const ApiCredit = () => (
     }}>
         <Toolbar>
             <Container maxWidth='xs'>
-                <Box
+                <LinkBox
                     component={Link}
                     href='https://rickandmortyapi.com/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    sx={{
-                        pt: 2, display: 'flex', flexDirection: 'column', flexWrap: 'nowrap', justifyContent: 'center',
-                        alignItems: 'center', textDecoration: 'none', color: 'primary.contrastText', width: 'auto',
-                        '&:hover': {
-                            color: 'custom.thumbBlue'
-                        }
-                    }}>
+                >
                     <Icon
                         component={RnMSvgIcon}
                         sx={{ height: 36, width: 36, color: 'custom.main' }}
@@ -30,7 +39,7 @@ const ApiCredit = () => (
                     <XSFlexText component='h6' variant='h6' sx={{ py: 0.5 }}>
                         Powered By: The Rick And Morty API
                     </XSFlexText>
-                </Box>
+                </LinkBox>
             </Container>
         </Toolbar>
     </AppHeader>

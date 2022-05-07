@@ -3,9 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     // app state
     page: 1,
-    characters: [],
-    episodes: [],
-    locations: [],
     hasLoaded: false,
     // search state
     filter: '',
@@ -17,6 +14,7 @@ export const appSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {
+        reset: () => initialState,
         setPage: (state, action) => {
             state.page = action.payload;
         },
@@ -25,9 +23,6 @@ export const appSlice = createSlice({
         },
         setSearchResults: (state, action) => {
             state.searchResults = action.payload;
-        },
-        setCharacters: (state, action) => {
-            state.characters = action.payload;
         },
         setHasLoaded: (state, action) => {
             state.hasLoaded = action.payload;

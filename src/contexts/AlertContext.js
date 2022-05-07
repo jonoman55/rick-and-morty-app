@@ -3,7 +3,6 @@ import { useTheme, Slide, IconButton } from '@mui/material';
 import { SnackbarProvider as NotistackProvider } from 'notistack';
 import { Close as CloseIcon } from '@mui/icons-material';
 
-// TODO : Finish implementing the custom SnackMessage
 // import { SnackMessage } from './SnackMessage';
 
 const styles = (theme) => {
@@ -42,7 +41,6 @@ const styles = (theme) => {
     };
 };
 
-// eslint-disable-next-line no-unused-vars
 const DismissIcon = ({ onClick }) => (
     <IconButton size='small' onClick={onClick}>
         <CloseIcon

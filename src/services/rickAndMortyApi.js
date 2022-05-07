@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// https://redux-toolkit.js.org/rtk-query/api/createApi
+
 // https://rickandmortyapi.com/documentation/
+// https://redux-toolkit.js.org/rtk-query/api/createApi
 export const rickAndMortyApi = createApi({
     reducerPath: 'rickAndMortyApi',
     baseQuery: fetchBaseQuery({
@@ -9,14 +10,16 @@ export const rickAndMortyApi = createApi({
     }),
     tagTypes: ['Characters', 'Locations', 'Episodes'],
     endpoints: (builder) => ({
+        charactersSearch: builder.query({
+            query: (name) => `character/?name=${name}`,
+            providesTags: ['Characters'],
+        }),
         getAllCharacters: builder.query({
             query: (ids) => `character/${ids}`,
-            keepUnusedDataFor: 5,
             providesTags: ['Characters'],
         }),
         getCharacters: builder.query({
-            query: (page = 1) => `character?page=${page}`,
-            keepUnusedDataFor: 5,
+            query: (page = 1) => `character/?page=${page}`,
             providesTags: ['Characters'],
         }),
         getCharacterByName: builder.query({
@@ -27,12 +30,16 @@ export const rickAndMortyApi = createApi({
             query: (id) => `character/${id}`,
             providesTags: ['Characters'],
         }),
+        locationsSearch: builder.query({
+            query: (name) => `location/?name=${name}`,
+            providesTags: ['Locations'],
+        }),
         getAllLocations: builder.query({
             query: () => `location`,
             providesTags: ['Locations'],
         }),
         getLocations: builder.query({
-            query: (page = 1) => `location?page=${page}`,
+            query: (page = 1) => `location/?page=${page}`,
             providesTags: ['Locations'],
         }),
         getLocationByName: builder.query({
@@ -43,12 +50,16 @@ export const rickAndMortyApi = createApi({
             query: (id) => `location/${id}`,
             providesTags: ['Locations'],
         }),
+        episodesSearch: builder.query({
+            query: (name) => `episode/?name=${name}`,
+            providesTags: ['Episodes'],
+        }),
         getAllEpisodes: builder.query({
             query: () => `episode`,
-            providesTags: ['Locations'],
+            providesTags: ['Episodes'],
         }),
         getEpisodes: builder.query({
-            query: (page = 1) => `episode?page=${page}`,
+            query: (page = 1) => `episode/?page=${page}`,
             providesTags: ['Episodes'],
         }),
         getEpisodeByName: builder.query({
@@ -63,6 +74,9 @@ export const rickAndMortyApi = createApi({
 });
 
 export const {
+    useCharactersSearchQuery,
+    useLocationsSearchQuery,
+    useEpisodesSearchQuery,
     useGetAllCharactersQuery,
     useGetCharactersQuery,
     useGetCharacterByNameQuery,

@@ -3,13 +3,12 @@ import { useEffect, useState } from "react";
 import { Box, CardMedia, Container } from "@mui/material";
 import { styled, Card as MuiCard, CardContent as MuiCardContent } from "@mui/material";
 
+import { Spinner } from "../components/design";
 import { Button, ToolTip } from "../components/controls";
 import { useBreakpoints } from "../hooks/useBreakpoints";
-
-import { portal } from "../images";
 import { useGetAllLocationsQuery } from "../services/rickAndMortyApi";
-import { Spinner } from "../components/design";
 import { getRandomNumberBetween } from "../utils";
+import { portal } from "../images";
 
 const height = (matches) => {
     if (matches) {

@@ -6,6 +6,9 @@ import meeseeks from './meeseeks.png';
 import pixelRick from './pixel-rick.png';
 import backgroundImage from './site-background.png';
 import portal from './portal.gif';
+import portalThumbsUp from './portal-thumbs-up.png';
+import pickleRick from './duct-tape-pickle-rick.png';
+import kirklandMeeseeks from './mr-meeseeks-kirkland.png';
 import { RnMSvgIcon } from './RickAndMortyIcon';
 
 export {
@@ -14,6 +17,9 @@ export {
     noobNoob,
     morty,
     meeseeks,
+    portalThumbsUp,
+    pickleRick,
+    kirklandMeeseeks,
     pixelRick,
     backgroundImage,
     portal,

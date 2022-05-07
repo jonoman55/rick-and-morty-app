@@ -1,7 +1,7 @@
 import { Box, CardContent, Stack, Typography } from "@mui/material";
 
-import { Card } from "../styled/Card.styled";
 import { FlexText } from "../controls";
+import { Card } from "../styled/Card.styled";
 import { ResidentsIcon } from "../../helpers/icons";
 
 const LocationCard = ({ location }) => (
@@ -16,7 +16,10 @@ const LocationCard = ({ location }) => (
                 </FlexText>
             </CardContent>
             <Stack direction='row' spacing={1} sx={{ display: 'flex', alignItems: 'center', pl: 2, pb: 1 }}>
-                <ResidentsIcon count={location?.residents?.length} sx={{ color: 'custom.main', height: 16, width: 16 }} />
+                <ResidentsIcon
+                    count={location?.residents?.length}
+                    sx={{ color: 'custom.main', height: 16, width: 16 }}
+                />
                 <Typography variant='caption' fontSize={14}>
                     {location?.residents?.length ? location?.residents?.length : "No"} Residents
                 </Typography>

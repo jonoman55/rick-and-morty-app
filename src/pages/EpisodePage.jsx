@@ -18,8 +18,6 @@ const EpisodePage = () => {
     useEffect(() => {
         if (!isLoading) setEpisode(data);
     }, [data, isLoading]);
-
-    console.log(episode);
     
     return isLoading ? <Spinner /> : (
         <Box sx={{ my: 4 }}>

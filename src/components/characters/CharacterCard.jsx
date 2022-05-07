@@ -24,9 +24,17 @@ const CharacterCard = ({ character }) => (
                 </FlexText>
             </CardContent>
             <Stack direction='row' spacing={1} sx={{ display: 'flex', alignItems: 'center', pl: 2, pb: 1 }}>
-                <StatusIcon sx={{ color: statusColor(character.status), height: 32, width: 32 }} />
-                <GenderIcon gender={character?.gender} sx={{ color: genderColor(character?.gender), height: 32, width: 32 }} />
-                <SpeciesIcon species={character?.species} sx={{ color: speciesColor(character?.species), height: 32, width: 32 }} />
+                <StatusIcon
+                    sx={{ color: statusColor(character.status), height: 32, width: 32 }}
+                />
+                <GenderIcon
+                    gender={character?.gender}
+                    sx={{ color: genderColor(character?.gender), height: 32, width: 32 }}
+                />
+                <SpeciesIcon
+                    species={character?.species}
+                    sx={{ color: speciesColor(character?.species), height: 32, width: 32 }}
+                />
             </Stack>
         </Box>
     </Card>

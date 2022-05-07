@@ -1,5 +1,4 @@
 import { lazy } from 'react';
-// NOTE : HashRouter added for netlify
 import { HashRouter as Router, Routes as Switch, Route } from 'react-router-dom';
 
 import { Layout } from '../components/layout';

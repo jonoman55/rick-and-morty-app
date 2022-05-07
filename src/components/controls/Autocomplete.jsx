@@ -31,13 +31,13 @@ export const Autocomplete = ({ options, label, value, onChange, inputValue, onIn
         value={value}
         onChange={onChange}
         options={options
-            // .sort((a, b) => a?.name?.localeCompare(b?.name))
-            // .sort((a, b) => a?.status?.localeCompare(b?.status))
+            .sort((a, b) => a?.name?.localeCompare(b?.name))
+            .sort((a, b) => a?.status?.localeCompare(b?.status))
         }
         getOptionLabel={(option) => option?.name}
-        // inputValue={inputValue}
-        // onInputChange={onInputChange}
-        // groupBy={(option) => option?.species}
+        inputValue={inputValue}
+        onInputChange={onInputChange}
+        groupBy={(option) => option?.species}
         renderInput={(params) => <TextInput {...params} label={label} />}
         {...other}
     />

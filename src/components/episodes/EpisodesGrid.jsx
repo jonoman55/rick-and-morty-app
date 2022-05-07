@@ -19,9 +19,11 @@ const EpisodesGrid = () => {
     const navigate = useNavigate();
 
     const { page } = useSelector((state) => state.app);
+
     const { data, isLoading } = useGetEpisodesQuery(page);
 
     const [count, setCount] = useState(0);
+    
     const currentPage = parseInt(query.get('page') || '1', 10);
 
     useEffect(() => {

@@ -8,7 +8,6 @@ import { AppHeader, AnchorDiv, PortalDiv, LogoDiv, ThumbDiv, imageStyles } from 
 import { toggleTheme } from '../../reducers/themeSlice';
 import { useBreakpoints } from '../../hooks/useBreakpoints';
 import { usePathname } from '../../hooks/usePathname';
-
 import { logo, portal } from '../../images';
 
 const Header = () => {

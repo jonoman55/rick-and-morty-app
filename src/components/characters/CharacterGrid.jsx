@@ -19,9 +19,11 @@ const CharacterGrid = () => {
     const navigate = useNavigate();
 
     const { page } = useSelector((state) => state.app);
+
     const { data, isLoading } = useGetCharactersQuery(page);
     
     const [count, setCount] = useState(0);
+    
     const currentPage = parseInt(query.get('page') || '1', 10);
 
     useEffect(() => {
@@ -32,9 +34,7 @@ const CharacterGrid = () => {
     }, [currentPage, dispatch, navigate, pathname]);
 
     useEffect(() => {
-        if (!isLoading) {
-            setCount(data?.info?.pages);
-        }
+        if (!isLoading) setCount(data?.info?.pages);
     }, [data, isLoading]);
   
     return isLoading ? <Spinner /> : (
