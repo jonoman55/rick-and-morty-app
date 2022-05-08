@@ -23,7 +23,7 @@ const HomePage = () => {
     }, [hasLoaded, notify]);
 
     return (
-        <Box sx={{ my: 4 }}>
+        <Box sx={{ mt: 8, mb: 4 }}>
             <Container maxWidth='sm'>
                 <HomeCard />
             </Container>

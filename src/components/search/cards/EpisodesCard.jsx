@@ -18,7 +18,9 @@ const EpisodesCard = () => {
 
     const { data: getCount, isFetching } = useGetEpisodesQuery(1);
 
-    const { data: queryResults, isLoading } = useEpisodesSearchQuery(encodeURIComponent(filter));
+    const { data: queryResults, isLoading } = useEpisodesSearchQuery(
+        encodeURIComponent(filter)
+    );
 
     const count = useMemo(() => {
         if (!isFetching) return getCount?.info.count;

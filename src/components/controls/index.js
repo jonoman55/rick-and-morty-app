@@ -1,6 +1,6 @@
-import { Button } from './Buttons';
+import { Button } from './Button';
 import { TextInput } from './TextInput';
-import { Autocomplete, StyledAutocomplete as AutoComplete } from './Autocomplete';
+import { Autocomplete, StyledAutocomplete } from './Autocomplete';
 import { FlexText, XSFlexText } from './FlexText';
 import { ToolTip } from './ToolTip';
 
@@ -9,7 +9,7 @@ export {
     TextInput,
     FlexText,
     XSFlexText,
-    AutoComplete,
+    StyledAutocomplete,
     Autocomplete,
     ToolTip
 };

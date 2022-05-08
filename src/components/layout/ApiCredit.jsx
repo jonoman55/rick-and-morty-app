@@ -36,7 +36,7 @@ const ApiCredit = () => (
                         component={RnMSvgIcon}
                         sx={{ height: 36, width: 36, color: 'custom.main' }}
                     />
-                    <XSFlexText component='h6' variant='h6' sx={{ py: 0.5 }}>
+                    <XSFlexText component='h6' variant='h6' sx={{ py: 0.75 }}>
                         Powered By: The Rick And Morty API
                     </XSFlexText>
                 </LinkBox>

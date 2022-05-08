@@ -18,7 +18,9 @@ const CharactersCard = () => {
 
     const { data: getCount, isFetching } = useGetCharactersQuery(1);
 
-    const { data: queryResults, isLoading } = useCharactersSearchQuery(encodeURIComponent(filter));
+    const { data: queryResults, isLoading } = useCharactersSearchQuery(
+        encodeURIComponent(filter)
+    );
 
     const count = useMemo(() => {
         if (!isFetching) return getCount?.info.count;

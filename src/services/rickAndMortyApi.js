@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-
 // https://rickandmortyapi.com/documentation/
 // https://redux-toolkit.js.org/rtk-query/api/createApi
 export const rickAndMortyApi = createApi({
